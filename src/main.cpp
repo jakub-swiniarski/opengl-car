@@ -8,7 +8,7 @@
 int main(void) {
     try {
         if(!glfwInit())
-            throw Exception("Failed to initialize glfw.");
+            throw Exception("Failed to initialize GLFW.");
 
         App game;
     } catch (std::exception &e) {
