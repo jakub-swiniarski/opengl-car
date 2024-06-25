@@ -24,11 +24,10 @@ App::App(void) {
 
     if (!window) {
         glfwTerminate();
-        throw Exception("Failed to initialize window.");
+        throw Exception("Failed to initialize a window.");
     }
 
     glfwMakeContextCurrent(window);
-    glEnable(GL_DEPTH_TEST);
 
     run();
 
