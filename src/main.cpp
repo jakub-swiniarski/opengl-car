@@ -12,10 +12,11 @@ int main(void) {
 
         App game;
     } catch (Exception &e) {
-        std::cerr << "\033[31m[Error]\033[0m " << e.what() << '\n'; // TODO: these color codes don't work on windows
-
-        if (e.is_fatal())
+        if (e.is_fatal()) {
+            std::cerr << "\033[31m[Error]\033[0m " << e.what() << '\n'; // TODO: create an enum class for colors + these color codes don't work on windows
             return -1;
+        } else
+            std::cerr << "\033[33m[Warning]\033[0m]" << e.what() << '\n';
     } catch (std::exception &e) {
         std::cerr << "\033[31m[Error]\033[0m " << e.what() << '\n';
         return -1;
