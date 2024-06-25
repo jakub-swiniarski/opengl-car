@@ -6,9 +6,13 @@
 
 class ConfigManager {
     std::unordered_map<std::string, std::string> config;
+    std::string filename;
+
+    void load_defaults(void);
+    void load_config(std::string filename);
 
 public:
-    ConfigManager(std::string filename);
+    ConfigManager(void);
     std::string get_config(std::string key);
 };
 
