@@ -16,7 +16,7 @@ int main(void) {
             std::cerr << "\033[31m[Error]\033[0m " << e.what() << '\n'; // TODO: create an enum class for colors + these color codes don't work on windows
             return -1;
         } else
-            std::cerr << "\033[33m[Warning]\033[0m]" << e.what() << '\n';
+            std::cerr << "\033[33m[Warning]\033[0m]" << e.what() << '\n'; // FIXME: warnings are not displayed, only fatal errors that crash the game are shown (try multithreading?)
     } catch (std::exception &e) {
         std::cerr << "\033[31m[Error]\033[0m " << e.what() << '\n';
         return -1;
