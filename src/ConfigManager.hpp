@@ -9,7 +9,7 @@ class ConfigManager {
 
 public:
     ConfigManager(std::string filename);
-    std::string get_config(std::string str);
+    std::string get_config(std::string key);
 };
 
 #endif // CONFIGMANAGER_HPP

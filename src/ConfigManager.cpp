@@ -22,12 +22,12 @@ ConfigManager::ConfigManager(std::string filename) {
     }
 }
 
-std::string ConfigManager::get_config(std::string str) {
-    if (config.find(str) == config.end()) {
+std::string ConfigManager::get_config(std::string key) {
+    if (config.find(key) == config.end()) {
         std::ostringstream error_msg;
-        error_msg << "Failed to find " << str << " in config.txt.";
+        error_msg << "Failed to find " << key << " in config.txt.";
         throw Exception(error_msg.str());
     }
     
-    return config[str];
+    return config[key];
 }
