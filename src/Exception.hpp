@@ -5,10 +5,10 @@
 #include <string>
 
 class Exception : public std::exception { 
-    std::string message; 
+    const std::string message; 
   
 public: 
-    Exception(const char *msg);
+    Exception(const std::string msg);
     const char *what() const throw();
 }; 
 
