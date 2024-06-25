@@ -4,11 +4,16 @@
 #include "ConfigManager.hpp"
 #include "Exception.hpp"
 
-ConfigManager::ConfigManager(std::string filename) {
+void ConfigManager::load_defaults(void) {
+    config["window_width"] = "400";
+    config["window_height"] = "300";
+}
+
+void ConfigManager::load_config(std::string filename) {
     std::ifstream file(filename);
 
     if (!file.is_open())
-        throw Exception("Failed to open config.txt.");
+        throw Exception("Failed to open config.txt."); // TODO: shouldn't cause crash, bool is_fatal as arg
 
     std::string line;
     while (std::getline(file, line)) {
@@ -20,6 +25,11 @@ ConfigManager::ConfigManager(std::string filename) {
 
         config[key] = value;
     }
+}
+
+ConfigManager::ConfigManager(void) : filename("config.txt") {
+    load_defaults();
+    load_config(filename);
 }
 
 std::string ConfigManager::get_config(std::string key) {

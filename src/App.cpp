@@ -15,7 +15,7 @@ void App::run(void) {
 }
 
 App::App(void) {
-    ConfigManager cfg_manager("config.txt"); // TODO: only if compiled with -DDEBUG, otherwise .config/...
+    ConfigManager cfg_manager; // TODO: only if compiled with -DDEBUG, otherwise .config/...
 
     window = glfwCreateWindow(
         std::stoi(cfg_manager.get_config("window_width")),
