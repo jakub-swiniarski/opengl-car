@@ -27,7 +27,8 @@ void ConfigManager::load_config(std::string filename) {
     }
 }
 
-ConfigManager::ConfigManager(void) : filename("config.txt") {
+ConfigManager::ConfigManager(void) 
+    : filename("config.txt") {
     load_defaults();
     load_config(filename);
 }
