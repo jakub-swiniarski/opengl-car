@@ -1,6 +1,7 @@
 #include <GLFW/glfw3.h>
 
 #include "App.hpp"
+#include "ConfigManager.hpp"
 #include "Exception.hpp"
 
 void App::run(void) {
@@ -14,9 +15,11 @@ void App::run(void) {
 }
 
 App::App(void) {
+    ConfigManager cfg_manager("config.txt"); // TODO: only if compiled with -DDEBUG, otherwise .config/...
+
     window = glfwCreateWindow(
-        400,
-        300,
+        std::stoi(cfg_manager.get_config("window_width")),
+        std::stoi(cfg_manager.get_config("window_height")),
         "Shift and Drift", 
         nullptr, 
         nullptr
