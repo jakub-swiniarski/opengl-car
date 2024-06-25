@@ -27,7 +27,7 @@ App::App(void) {
 
     if (!window) {
         glfwTerminate();
-        throw Exception("Failed to initialize a window.");
+        throw Exception("Failed to initialize a window.", true);
     }
 
     glfwMakeContextCurrent(window);
