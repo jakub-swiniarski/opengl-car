@@ -6,10 +6,12 @@
 
 class Exception : public std::exception { 
     const std::string message; 
+    const bool type;
   
 public: 
-    Exception(const std::string msg);
-    const char *what() const throw();
+    Exception(const std::string msg, const bool t);
+    const char *what() const throw() override;
+    const bool is_fatal(void) const;
 }; 
 
 #endif // EXCEPTION_HPP
