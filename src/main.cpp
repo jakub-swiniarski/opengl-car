@@ -12,12 +12,12 @@ int main(void) {
 
         App game;
     } catch (Exception &e) {
-        std::cerr << "Error: " << e.what() << '\n'; // TODO: add red [ERROR] label
+        std::cerr << "\033[31m[Error]\033[0m " << e.what() << '\n'; // TODO: these color codes don't work on windows
 
         if (e.is_fatal())
             return -1;
     } catch (std::exception &e) {
-        std::cerr << "Error: " << e.what() << '\n';
+        std::cerr << "\033[31m[Error]\033[0m " << e.what() << '\n';
         return -1;
     }
 

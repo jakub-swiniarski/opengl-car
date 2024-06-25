@@ -25,6 +25,8 @@ App::App(void) {
         nullptr
     );
 
+    window = nullptr;
+
     if (!window) {
         glfwTerminate();
         throw Exception("Failed to initialize a window.", true);
