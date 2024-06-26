@@ -4,12 +4,12 @@
 #include "ConfigManager.hpp"
 #include "Exception.hpp"
 
-void ConfigManager::load_defaults(void) {
+void sd::ConfigManager::load_defaults(void) {
     config["window_width"] = "1280";
     config["window_height"] = "720";
 }
 
-void ConfigManager::load_config(std::string filename) {
+void sd::ConfigManager::load_config(std::string filename) {
     std::ifstream file(filename);
 
     if (!file.is_open())
@@ -27,13 +27,13 @@ void ConfigManager::load_config(std::string filename) {
     }
 }
 
-ConfigManager::ConfigManager(void) 
+sd::ConfigManager::ConfigManager(void) 
     : filename("config.txt") {
     load_defaults();
     load_config(filename);
 }
 
-std::string ConfigManager::get_config(std::string key) {
+std::string sd::ConfigManager::get_config(std::string key) {
     if (config.find(key) == config.end()) {
         std::ostringstream error_msg;
         error_msg << "Failed to find " << key << " in config.txt.";

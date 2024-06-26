@@ -3,13 +3,15 @@
 
 class GLFWwindow;
 
-class App {
-    GLFWwindow *window;
+namespace sd {
+    class App {
+        GLFWwindow *window;
 
-    void run(void);
+        void run(void);
 
-public:
-    App(void);
-};
+    public:
+        App(void);
+    };
+}
 
 #endif // APP_HPP
