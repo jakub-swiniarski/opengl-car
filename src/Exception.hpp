@@ -4,14 +4,16 @@
 #include <exception>
 #include <string>
 
-class Exception : public std::exception { 
-    const std::string message; 
-    const bool type;
-  
-public: 
-    Exception(const std::string msg, const bool t);
-    const char *what() const throw() override;
-    const bool is_fatal(void) const;
-}; 
+namespace sd {
+    class Exception : public std::exception { 
+        const std::string message; 
+        const bool type;
+      
+    public: 
+        Exception(const std::string msg, const bool t);
+        const char *what() const throw() override;
+        const bool is_fatal(void) const;
+    }; 
+}
 
 #endif // EXCEPTION_HPP

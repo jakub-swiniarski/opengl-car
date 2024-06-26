@@ -4,7 +4,7 @@
 #include "ConfigManager.hpp"
 #include "Exception.hpp"
 
-void App::run(void) {
+void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -14,7 +14,7 @@ void App::run(void) {
     }
 }
 
-App::App(void) {
+sd::App::App(void) {
     ConfigManager cfg_manager;
 
     window = glfwCreateWindow(

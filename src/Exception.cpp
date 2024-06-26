@@ -1,12 +1,12 @@
 #include "Exception.hpp"
 
-Exception::Exception(const std::string msg, const bool t) 
+sd::Exception::Exception(const std::string msg, const bool t) 
     : message(msg), type(t) {}
 
-const char *Exception::what() const throw() {
+const char *sd::Exception::what() const throw() {
     return message.c_str(); 
 }
 
-const bool Exception::is_fatal(void) const {
+const bool sd::Exception::is_fatal(void) const {
     return type;
 }
