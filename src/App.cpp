@@ -3,7 +3,6 @@
 #include <GLFW/glfw3.h>
 
 #include "App.hpp"
-#include "ConfigManager.hpp"
 #include "Exception.hpp"
 
 void sd::App::run(void) {
@@ -38,9 +37,9 @@ void sd::App::render_model(sd::Model &m) {
 }
 
 sd::App::App(void) 
-    : camera(90.f),
+    : cfg_manager("config.txt"),
+      camera(90.f),
       car("res/obj/chevrolet.obj") {
-    ConfigManager cfg_manager;
 
     if (std::stoi(cfg_manager.get_config("fullscreen"))) {
         window = glfwCreateWindow(

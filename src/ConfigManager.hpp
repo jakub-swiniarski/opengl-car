@@ -13,7 +13,7 @@ namespace sd {
         void load_config(std::string filename);
 
     public:
-        ConfigManager(void);
+        ConfigManager(std::string filename);
         std::string get_config(std::string key);
     };
 }

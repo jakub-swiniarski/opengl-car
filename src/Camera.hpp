@@ -6,7 +6,7 @@ namespace sd {
         float fov;
 
     public:
-        Camera(float f);
+        Camera(float fov);
         void update(int width, int height);
     };
 }

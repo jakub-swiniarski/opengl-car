@@ -3,8 +3,8 @@
 
 #include "Camera.hpp"
 
-sd::Camera::Camera(float f)
-    : fov(f) {}
+sd::Camera::Camera(float fov)
+    : fov(fov) {}
 
 void sd::Camera::update(int width, int height) {
     glViewport(0, 0, width, height);
