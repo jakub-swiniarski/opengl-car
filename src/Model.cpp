@@ -4,7 +4,8 @@
 #include "Exception.hpp"
 #include "Model.hpp"
 
-sd::Model::Model(std::string filename) {
+sd::Model::Model(std::string filename, Vec3 pos) 
+    : pos(pos) {
     std::ifstream obj_file;
     obj_file.open(filename); // TODO: throw error if no such file found
 
