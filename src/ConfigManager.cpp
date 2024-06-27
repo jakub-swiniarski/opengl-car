@@ -5,8 +5,9 @@
 #include "Exception.hpp"
 
 void sd::ConfigManager::load_defaults(void) {
-    config["window_width"] = "1280";
+    config["window_width"]  = "1280";
     config["window_height"] = "720";
+    config["fullscreen"]    = "0";
 }
 
 void sd::ConfigManager::load_config(std::string filename) {
@@ -33,7 +34,7 @@ sd::ConfigManager::ConfigManager(void)
     load_config(filename);
 }
 
-std::string sd::ConfigManager::get_config(std::string key) {
+std::string sd::ConfigManager::get_config(std::string key) { // TODO: add methods that automatically cast to the right type (call this method)
     if (config.find(key) == config.end()) {
         std::ostringstream error_msg;
         error_msg << "Failed to find " << key << " in config.";

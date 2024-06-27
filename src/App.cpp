@@ -17,13 +17,23 @@ void sd::App::run(void) {
 sd::App::App(void) {
     ConfigManager cfg_manager;
 
-    window = glfwCreateWindow(
-        std::stoi(cfg_manager.get_config("window_width")),
-        std::stoi(cfg_manager.get_config("window_height")),
-        "Shift and Drift", 
-        nullptr, 
-        nullptr
-    );
+    if (std::stoi(cfg_manager.get_config("fullscreen"))) {
+        window = glfwCreateWindow(
+            std::stoi(cfg_manager.get_config("window_width")),
+            std::stoi(cfg_manager.get_config("window_height")),
+            "Shift and Drift", 
+            glfwGetPrimaryMonitor(),
+            nullptr
+        );
+    } else {
+        window = glfwCreateWindow(
+            std::stoi(cfg_manager.get_config("window_width")),
+            std::stoi(cfg_manager.get_config("window_height")),
+            "Shift and Drift", 
+            nullptr,
+            nullptr
+        );
+    }
 
     if (!window) {
         glfwTerminate();
