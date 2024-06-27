@@ -28,8 +28,8 @@ void sd::ConfigManager::load_config(std::string filename) {
     }
 }
 
-sd::ConfigManager::ConfigManager(void) // TODO: path as argument
-    : filename("config.txt") {
+sd::ConfigManager::ConfigManager(std::string filename)
+    : filename(filename) {
     load_defaults();
     load_config(filename);
 }

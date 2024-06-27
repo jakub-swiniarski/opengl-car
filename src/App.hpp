@@ -2,6 +2,7 @@
 #define APP_HPP
 
 #include "Camera.hpp"
+#include "ConfigManager.hpp"
 #include "Model.hpp"
 
 class GLFWwindow;
@@ -9,6 +10,7 @@ class GLFWwindow;
 namespace sd {
     class App {
         GLFWwindow *window;
+        ConfigManager cfg_manager;
         Camera camera;
         sd::Model car;
 
