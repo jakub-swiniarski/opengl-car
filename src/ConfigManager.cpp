@@ -36,7 +36,7 @@ sd::ConfigManager::ConfigManager(void)
 std::string sd::ConfigManager::get_config(std::string key) {
     if (config.find(key) == config.end()) {
         std::ostringstream error_msg;
-        error_msg << "Failed to find " << key << " in config.txt.";
+        error_msg << "Failed to find " << key << " in config.";
         throw Exception(error_msg.str(), false);
     }
     
