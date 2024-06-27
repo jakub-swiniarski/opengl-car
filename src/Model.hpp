@@ -6,12 +6,14 @@
 
 #include "Vec3.hpp"
 
-class Model {
-    std::vector<Vec3> verts;
+namespace sd {
+    class Model {
+        std::vector<Vec3> verts;
 
-public:
-    Model(std::string filename);
-    std::vector<Vec3> &get_verts(void);
-};
+    public:
+        Model(std::string filename);
+        std::vector<Vec3> &get_verts(void);
+    };
+}
 
 #endif // MODEL_HPP

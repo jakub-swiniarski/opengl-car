@@ -4,9 +4,9 @@
 #include "Exception.hpp"
 #include "Model.hpp"
 
-Model::Model(std::string filename) {
+sd::Model::Model(std::string filename) {
     std::ifstream obj_file;
-    obj_file.open(filename);
+    obj_file.open(filename); // TODO: throw error if no such file found
 
     std::vector<Vec3> buffer;
 
@@ -33,6 +33,6 @@ Model::Model(std::string filename) {
         throw sd::Exception("No vertices found.", true);
 }
 
-std::vector<Vec3> &Model::get_verts(void) {
+std::vector<Vec3> &sd::Model::get_verts(void) {
     return verts;
 }
