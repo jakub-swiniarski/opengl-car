@@ -8,11 +8,12 @@
 
 namespace sd {
     class Model {
+        Vec3 pos;
         std::vector<Vec3> verts;
         std::vector<Vec3> normals;
 
     public:
-        Model(std::string filename);
+        Model(std::string filename, Vec3 pos);
         std::vector<Vec3> &get_verts(void);
         std::vector<Vec3> &get_normals(void);
     };

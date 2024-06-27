@@ -39,7 +39,7 @@ void sd::App::render_model(sd::Model &m) {
 sd::App::App(void) 
     : cfg_manager("config.txt"),
       camera(std::stof(cfg_manager.get_config("fov"))),
-      car("res/obj/chevrolet.obj") {
+      car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = 0.0f }) {
 
     if (std::stoi(cfg_manager.get_config("fullscreen"))) {
         window = glfwCreateWindow(
