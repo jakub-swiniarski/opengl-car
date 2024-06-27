@@ -15,11 +15,9 @@ void sd::App::run(void) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glLoadIdentity();
-        glTranslatef(0.0f, 0.0f, -5.0f);
-        glRotatef(angle, 1.0f, 1.0f, 1.0f);
+        glTranslatef(0.0f, 0.0f, -10.0f);
 
         render_model(car);
-        angle++;
 
         glfwSwapBuffers(window);
 
@@ -60,8 +58,7 @@ void sd::App::render_model(sd::Model &m) {
 }
 
 sd::App::App(void) 
-    : car("res/obj/chevrolet.obj"),
-      angle(0.f) {
+    : car("res/obj/chevrolet.obj") {
     ConfigManager cfg_manager;
 
     if (std::stoi(cfg_manager.get_config("fullscreen"))) {
