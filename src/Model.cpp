@@ -30,7 +30,7 @@ Model::Model(std::string filename) {
     }
 
     if (verts.size() <= 0)
-        throw Exception("No vertices found.");
+        throw sd::Exception("No vertices found.", true);
 }
 
 std::vector<Vec3> &Model::get_verts(void) {
