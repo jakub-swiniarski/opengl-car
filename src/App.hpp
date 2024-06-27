@@ -9,7 +9,6 @@ namespace sd {
     class App {
         GLFWwindow *window;
         sd::Model car;
-        float angle;
 
         void run(void);
         void setup_perspective(int width, int height, float fov);
