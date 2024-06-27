@@ -1,5 +1,4 @@
 #include <cmath>
-#include <GL/gl.h>
 #include <GLFW/glfw3.h>
 
 #include "App.hpp"
@@ -8,7 +7,18 @@
 
 void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
-        glClear(GL_COLOR_BUFFER_BIT);
+        int width, height;
+        glfwGetFramebufferSize(window, &width, &height);
+        setup_perspective(width, height, 90.f);
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        glLoadIdentity();
+        glTranslatef(0.0f, 0.0f, -5.0f);
+        glRotatef(angle, 1.0f, 1.0f, 1.0f);
+
+        render_model(car);
+        angle++;
 
         glfwSwapBuffers(window);
 
@@ -17,8 +27,6 @@ void sd::App::run(void) {
 }
 
 void sd::App::setup_perspective(int width, int height, float fov) {
-    glEnable(GL_DEPTH_TEST);
-
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -36,10 +44,20 @@ void sd::App::setup_perspective(int width, int height, float fov) {
 
     glMultMatrixf(projection_matrix);
     glMatrixMode(GL_MODELVIEW);
-    
 }
 
-sd::App::App(void) {
+void sd::App::render_model(sd::Model &m) {
+    glBegin(GL_TRIANGLES);
+
+    for (const auto &v : m.get_verts())
+        glVertex3f(v.x, v.y, v.z);
+
+    glEnd();
+}
+
+sd::App::App(void) 
+    : car("res/teapot.obj"),
+      angle(0.f) {
     ConfigManager cfg_manager;
 
     if (std::stoi(cfg_manager.get_config("fullscreen"))) {
@@ -66,12 +84,7 @@ sd::App::App(void) {
     }
 
     glfwMakeContextCurrent(window);
-
-    setup_perspective(
-        std::stoi(cfg_manager.get_config("window_width")),
-        std::stoi(cfg_manager.get_config("window_height")),
-        90.f
-    );
+    glEnable(GL_DEPTH_TEST);
 
     run();
 
