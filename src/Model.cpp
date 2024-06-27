@@ -45,6 +45,10 @@ sd::Model::Model(std::string filename, Vec3 pos)
         throw sd::Exception("No vertices found.", true);
 }
 
+Vec3 &sd::Model::get_pos(void) {
+    return pos;
+}
+
 std::vector<Vec3> &sd::Model::get_verts(void) {
     return verts;
 }

@@ -14,7 +14,11 @@ void sd::App::run(void) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glLoadIdentity();
-        glTranslatef(0.0f, 0.0f, -10.0f);
+        glTranslatef(
+            car.get_pos().x,
+            car.get_pos().y,
+            car.get_pos().z
+        );
 
         render_model(car);
 
@@ -39,7 +43,7 @@ void sd::App::render_model(sd::Model &m) {
 sd::App::App(void) 
     : cfg_manager("config.txt"),
       camera(std::stof(cfg_manager.get_config("fov"))),
-      car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = 0.0f }) {
+      car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }) {
 
     if (std::stoi(cfg_manager.get_config("fullscreen"))) {
         window = glfwCreateWindow(
