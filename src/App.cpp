@@ -44,5 +44,6 @@ sd::App::App(void) {
 
     run();
 
+    glfwDestroyWindow(window);
     glfwTerminate();
 }
