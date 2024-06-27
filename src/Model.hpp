@@ -14,6 +14,7 @@ namespace sd {
 
     public:
         Model(std::string filename, Vec3 pos);
+        Vec3 &get_pos(void);
         std::vector<Vec3> &get_verts(void);
         std::vector<Vec3> &get_normals(void);
     };
