@@ -10,7 +10,7 @@ void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
         int width, height;
         glfwGetFramebufferSize(window, &width, &height);
-        setup_perspective(width, height, 90.f);
+        camera.update(width, height);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -23,26 +23,6 @@ void sd::App::run(void) {
 
         glfwPollEvents();
     }
-}
-
-void sd::App::setup_perspective(int width, int height, float fov) {
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-
-    float aspect_ratio = static_cast<float>(width) / static_cast<float>(height);
-    float near_plane = 0.1f;
-    float far_plane = 100.0f;
-    float f = 1.0f / tan(fov * 0.5f * M_PI / 180.0f);
-    float projection_matrix[] = {
-        f / aspect_ratio, 0.0f, 0.0f, 0.0f,
-        0.0f, f, 0.0f, 0.0f,
-        0.0f, 0.0f, (far_plane + near_plane) / (near_plane - far_plane), -1.0f,
-        0.0f, 0.0f, (2.0f * far_plane * near_plane) / (near_plane - far_plane), 0.0f
-    };
-
-    glMultMatrixf(projection_matrix);
-    glMatrixMode(GL_MODELVIEW);
 }
 
 void sd::App::render_model(sd::Model &m) {
@@ -58,7 +38,8 @@ void sd::App::render_model(sd::Model &m) {
 }
 
 sd::App::App(void) 
-    : car("res/obj/chevrolet.obj") {
+    : camera(90.f),
+      car("res/obj/chevrolet.obj") {
     ConfigManager cfg_manager;
 
     if (std::stoi(cfg_manager.get_config("fullscreen"))) {
