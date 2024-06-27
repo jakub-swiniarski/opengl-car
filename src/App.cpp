@@ -38,7 +38,7 @@ void sd::App::render_model(sd::Model &m) {
 
 sd::App::App(void) 
     : cfg_manager("config.txt"),
-      camera(90.f),
+      camera(std::stof(cfg_manager.get_config("fov"))),
       car("res/obj/chevrolet.obj") {
 
     if (std::stoi(cfg_manager.get_config("fullscreen"))) {

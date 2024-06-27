@@ -8,6 +8,7 @@ void sd::ConfigManager::load_defaults(void) {
     config["window_width"]  = "1280";
     config["window_height"] = "720";
     config["fullscreen"]    = "0";
+    config["fov"]           = "90.0";
 }
 
 void sd::ConfigManager::load_config(std::string filename) {
