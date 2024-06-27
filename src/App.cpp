@@ -1,3 +1,4 @@
+#include <GL/gl.h>
 #include <cmath>
 #include <GLFW/glfw3.h>
 
@@ -49,6 +50,9 @@ void sd::App::setup_perspective(int width, int height, float fov) {
 void sd::App::render_model(sd::Model &m) {
     glBegin(GL_TRIANGLES);
 
+    for (const auto &vn : m.get_normals())
+        glNormal3f(vn.x, vn.y, vn.z);
+
     for (const auto &v : m.get_verts())
         glVertex3f(v.x, v.y, v.z);
 
@@ -56,7 +60,7 @@ void sd::App::render_model(sd::Model &m) {
 }
 
 sd::App::App(void) 
-    : car("res/teapot.obj"),
+    : car("res/obj/chevrolet.obj"),
       angle(0.f) {
     ConfigManager cfg_manager;
 
