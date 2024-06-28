@@ -15,7 +15,7 @@ sd::Model::Model(std::string filename, Vec3 pos)
     std::string line;
     while (std::getline(obj_file, line)) {
         std::istringstream iss(line);
-        std::string mode; // TODO: use std::string in the future (for vt, vn, vp)
+        std::string mode;
         iss >> mode;
 
         if (mode == "v") {
