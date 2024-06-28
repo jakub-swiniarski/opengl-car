@@ -3,6 +3,9 @@
 #include "InputProcessor.hpp"
 #include "Model.hpp"
 
+sd::InputProcessor::InputProcessor(sd::Model *player)
+    : player(player) {}
+
 void sd::InputProcessor::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     // TODO: delta time
     if (key == GLFW_KEY_W && action == GLFW_PRESS)
