@@ -2,7 +2,7 @@
 
 #include "Camera.hpp"
 
-sd::Camera::Camera(Vec3 pos, GLfloat fov)
+sd::Camera::Camera(sd::Vec3 pos, GLfloat fov)
     : pos(pos), fov(fov) {}
 
 void sd::Camera::update(int width, int height) {

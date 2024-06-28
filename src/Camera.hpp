@@ -7,11 +7,11 @@
 
 namespace sd {
     class Camera {
-        Vec3 pos;
+        sd::Vec3 pos;
         GLfloat fov;
 
     public:
-        Camera(Vec3 pos, GLfloat fov);
+        Camera(sd::Vec3 pos, GLfloat fov);
         void update(int width, int height);
     };
 }
