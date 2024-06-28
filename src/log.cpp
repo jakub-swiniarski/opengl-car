@@ -2,7 +2,6 @@
 
 #include "log.hpp"
 
-// TODO: these color codes don't work on windows
 const std::string sd::color::reset = "\033[0m";
 const std::string sd::color::red = "\033[31m";
 const std::string sd::color::yellow = "\033[33m";
