@@ -16,7 +16,7 @@ namespace sd {
 }
 
 void sd::log(std::string label, std::string col, const char *msg) {
-    std::cerr << "[" << col << label << sd::color::reset << "] " << msg << '\n';
+    std::cerr << "[" << col << label << sd::color::reset << "] " << msg << std::endl;
 }
 
 int main(void) {

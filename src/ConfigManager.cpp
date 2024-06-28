@@ -16,16 +16,17 @@ void sd::ConfigManager::load_config(std::string filename) {
 
     if (!file.is_open())
         throw Exception("Failed to open config.txt.", false);
+    else {
+        std::string line;
+        while (std::getline(file, line)) {
+            std::string key, value;
 
-    std::string line;
-    while (std::getline(file, line)) {
-        std::string key, value;
+            std::istringstream iss(line);
+            std::getline(iss, key, ':');
+            iss >> value;
 
-        std::istringstream iss(line);
-        std::getline(iss, key, ':');
-        iss >> value;
-
-        config[key] = value;
+            config[key] = value;
+        }
     }
 }
 
