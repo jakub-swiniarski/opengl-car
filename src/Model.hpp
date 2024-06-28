@@ -20,6 +20,7 @@ namespace sd {
         GLfloat &get_angle(void);
         std::vector<sd::Vec3> &get_verts(void);
         std::vector<sd::Vec3> &get_normals(void);
+        void move(sd::Vec3 vec);
     };
 }
 
