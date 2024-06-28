@@ -1,9 +1,8 @@
 #include <cmath>
-#include <GL/gl.h>
 
 #include "Camera.hpp"
 
-sd::Camera::Camera(Vec3 pos, float fov)
+sd::Camera::Camera(Vec3 pos, GLfloat fov)
     : pos(pos), fov(fov) {}
 
 void sd::Camera::update(int width, int height) {
@@ -12,11 +11,11 @@ void sd::Camera::update(int width, int height) {
     glLoadIdentity();
     glTranslatef(pos.x, pos.y, pos.z);
 
-    float aspect_ratio = static_cast<float>(width) / static_cast<float>(height);
-    float near_plane = 0.1f;
-    float far_plane = 100.0f;
-    float f = 1.0f / tan(fov * 0.5f * M_PI / 180.0f);
-    float projection_matrix[] = {
+    GLfloat aspect_ratio = static_cast<GLfloat>(width) / static_cast<GLfloat>(height);
+    GLfloat near_plane = 0.1f;
+    GLfloat far_plane = 100.0f;
+    GLfloat f = 1.0f / tan(fov * 0.5f * M_PI / 180.0f);
+    GLfloat projection_matrix[] = {
         f / aspect_ratio, 0.0f, 0.0f, 0.0f,
         0.0f, f, 0.0f, 0.0f,
         0.0f, 0.0f, (far_plane + near_plane) / (near_plane - far_plane), -1.0f,
