@@ -29,7 +29,7 @@ void sd::App::run(void) {
 }
 
 void sd::App::render_model(sd::Model &m) {
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_QUADS);
 
     for (const auto &vn : m.get_normals())
         glNormal3f(vn.x, vn.y, vn.z);
