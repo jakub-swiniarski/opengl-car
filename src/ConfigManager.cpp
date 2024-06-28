@@ -37,9 +37,21 @@ sd::ConfigManager::ConfigManager(std::string filename)
     load_config(filename);
 }
 
-std::string sd::ConfigManager::get_config(std::string key) { // TODO: add methods that automatically cast to the right type (call this method)
+std::string sd::ConfigManager::get_config_s(std::string key) {
     if (config.find(key) == config.end())
         throw std::runtime_error("Failed to find " + key + " in config.");
     
     return config[key];
+}
+
+template<>
+int sd::ConfigManager::get_config<int>(std::string key) {
+    std::string val = get_config_s(key);
+    return std::stoi(val);
+}
+
+template<>
+float sd::ConfigManager::get_config<float>(std::string key) {
+    std::string val = get_config_s(key);
+    return std::stof(val);
 }

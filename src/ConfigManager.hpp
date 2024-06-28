@@ -14,7 +14,9 @@ namespace sd {
 
     public:
         ConfigManager(std::string filename);
-        std::string get_config(std::string key);
+        std::string get_config_s(std::string key);
+        template<class T>
+        T get_config(std::string key);
     };
 }
 

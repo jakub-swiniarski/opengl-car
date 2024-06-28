@@ -42,21 +42,21 @@ void sd::App::render_model(sd::Model &m) {
 
 sd::App::App(void) 
     : cfg_manager("config.txt"),
-      camera(std::stof(cfg_manager.get_config("fov"))),
+      camera(cfg_manager.get_config<float>("fov")),
       car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }) {
 
-    if (std::stoi(cfg_manager.get_config("fullscreen"))) {
+    if (cfg_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(
-            std::stoi(cfg_manager.get_config("window_width")),
-            std::stoi(cfg_manager.get_config("window_height")),
+            cfg_manager.get_config<int>("window_width"),
+            cfg_manager.get_config<int>("window_height"),
             "Shift and Drift", 
             glfwGetPrimaryMonitor(),
             nullptr
         );
     } else {
         window = glfwCreateWindow(
-            std::stoi(cfg_manager.get_config("window_width")),
-            std::stoi(cfg_manager.get_config("window_height")),
+            cfg_manager.get_config<int>("window_width"),
+            cfg_manager.get_config<int>("window_height"),
             "Shift and Drift", 
             nullptr,
             nullptr
