@@ -30,7 +30,7 @@ int main(void) {
             sd::log("Error", sd::color::red, e.what());
             return -1;
         } else
-            sd::log("Warning", sd::color::yellow, e.what()); // FIXME: warnings are not displayed, only fatal errors that crash the game are shown (try multithreading?)
+            sd::log("Warning", sd::color::yellow, e.what()); // FIXME: warnings crash the game (closing file in configmanager before reading)
     } catch (const std::exception &e) {
         sd::log("Error", sd::color::red, e.what());
         return -1;
