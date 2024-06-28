@@ -38,11 +38,8 @@ sd::ConfigManager::ConfigManager(std::string filename)
 }
 
 std::string sd::ConfigManager::get_config(std::string key) { // TODO: add methods that automatically cast to the right type (call this method)
-    if (config.find(key) == config.end()) {
-        std::ostringstream error_msg;
-        error_msg << "Failed to find " << key << " in config.";
-        throw std::runtime_error(error_msg.str());
-    }
+    if (config.find(key) == config.end())
+        throw std::runtime_error("Failed to find " + key + " in config.");
     
     return config[key];
 }
