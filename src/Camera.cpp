@@ -3,13 +3,14 @@
 
 #include "Camera.hpp"
 
-sd::Camera::Camera(float fov)
-    : fov(fov) {}
+sd::Camera::Camera(Vec3 pos, float fov)
+    : pos(pos), fov(fov) {}
 
 void sd::Camera::update(int width, int height) {
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+    glTranslatef(pos.x, pos.y, pos.z);
 
     float aspect_ratio = static_cast<float>(width) / static_cast<float>(height);
     float near_plane = 0.1f;
