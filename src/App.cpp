@@ -1,9 +1,9 @@
 #include <GL/gl.h>
 #include <cmath>
 #include <GLFW/glfw3.h>
+#include <stdexcept>
 
 #include "App.hpp"
-#include "Exception.hpp"
 
 void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
@@ -65,7 +65,7 @@ sd::App::App(void)
 
     if (!window) {
         glfwTerminate();
-        throw Exception("Failed to initialize a window.", true);
+        throw std::runtime_error("Failed to initialize a window.");
     }
 
     glfwMakeContextCurrent(window);

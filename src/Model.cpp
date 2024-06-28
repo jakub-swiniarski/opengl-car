@@ -1,7 +1,7 @@
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
 
-#include "Exception.hpp"
 #include "Model.hpp"
 
 sd::Model::Model(std::string filename, Vec3 pos) 
@@ -42,7 +42,7 @@ sd::Model::Model(std::string filename, Vec3 pos)
     }
 
     if (verts.size() <= 0)
-        throw sd::Exception("No vertices found.", true);
+        throw std::runtime_error("No vertices found.");
 }
 
 Vec3 &sd::Model::get_pos(void) {
