@@ -10,7 +10,7 @@ namespace sd {
         const bool type;
       
     public: 
-        Exception(const std::string msg, const bool t);
+        Exception(const std::string msg, const bool type);
         const char *what() const throw() override;
         const bool is_fatal(void) const;
     }; 
