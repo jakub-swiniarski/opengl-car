@@ -7,7 +7,10 @@
 sd::Model::Model(std::string filename, Vec3 pos) 
     : pos(pos) {
     std::ifstream obj_file;
-    obj_file.open(filename); // TODO: throw error if no such file found
+    obj_file.open(filename);
+
+    if (!obj_file.is_open())
+        throw std::runtime_error("Failed to open " + filename + ".");
 
     std::vector<Vec3> buffer_v;
     std::vector<Vec3> buffer_vn;
