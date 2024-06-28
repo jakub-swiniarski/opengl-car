@@ -9,17 +9,17 @@
 
 namespace sd {
     class Model {
-        Vec3 pos;
+        sd::Vec3 pos;
         GLfloat angle;
-        std::vector<Vec3> verts;
-        std::vector<Vec3> normals;
+        std::vector<sd::Vec3> verts;
+        std::vector<sd::Vec3> normals;
 
     public:
-        Model(std::string filename, Vec3 pos, GLfloat angle);
-        Vec3 &get_pos(void);
+        Model(std::string filename, sd::Vec3 pos, GLfloat angle);
+        sd::Vec3 &get_pos(void);
         GLfloat &get_angle(void);
-        std::vector<Vec3> &get_verts(void);
-        std::vector<Vec3> &get_normals(void);
+        std::vector<sd::Vec3> &get_verts(void);
+        std::vector<sd::Vec3> &get_normals(void);
     };
 }
 

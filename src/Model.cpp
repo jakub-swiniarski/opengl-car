@@ -4,7 +4,7 @@
 
 #include "Model.hpp"
 
-sd::Model::Model(std::string filename, Vec3 pos, GLfloat angle) 
+sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat angle) 
     : pos(pos), angle(angle) {
     std::ifstream obj_file;
     obj_file.open(filename);
@@ -12,8 +12,8 @@ sd::Model::Model(std::string filename, Vec3 pos, GLfloat angle)
     if (!obj_file.is_open())
         throw std::runtime_error("Failed to open " + filename + ".");
 
-    std::vector<Vec3> buffer_v;
-    std::vector<Vec3> buffer_vn;
+    std::vector<sd::Vec3> buffer_v;
+    std::vector<sd::Vec3> buffer_vn;
 
     std::string line;
     while (std::getline(obj_file, line)) {
@@ -22,11 +22,11 @@ sd::Model::Model(std::string filename, Vec3 pos, GLfloat angle)
         iss >> mode;
 
         if (mode == "v") {
-            Vec3 vert;
+            sd::Vec3 vert;
             iss >> vert.x >> vert.y >> vert.z;
             buffer_v.push_back(vert);
         } else if (mode == "vn") {
-            Vec3 vert;
+            sd::Vec3 vert;
             iss >> vert.x >> vert.y >> vert.z;
             buffer_vn.push_back(vert);
         } else if (mode == "f") {
@@ -48,7 +48,7 @@ sd::Model::Model(std::string filename, Vec3 pos, GLfloat angle)
         throw std::runtime_error("No vertices found.");
 }
 
-Vec3 &sd::Model::get_pos(void) {
+sd::Vec3 &sd::Model::get_pos(void) {
     return pos;
 }
 
@@ -56,10 +56,10 @@ GLfloat &sd::Model::get_angle(void) {
     return angle;
 }
 
-std::vector<Vec3> &sd::Model::get_verts(void) {
+std::vector<sd::Vec3> &sd::Model::get_verts(void) {
     return verts;
 }
 
-std::vector<Vec3> &sd::Model::get_normals(void) {
+std::vector<sd::Vec3> &sd::Model::get_normals(void) {
     return normals;
 }

@@ -3,8 +3,10 @@
 
 #include <GL/gl.h>
 
-struct Vec3 {
-    GLfloat x, y, z;
-};
+namespace sd {
+    struct Vec3 {
+        GLfloat x, y, z;
+    };
+}
 
 #endif // VERTEX_HPP

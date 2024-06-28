@@ -10,8 +10,8 @@ class GLFWwindow;
 namespace sd {
     class App {
         GLFWwindow *window;
-        ConfigManager cfg_manager;
-        Camera camera;
+        sd::ConfigManager cfg_manager;
+        sd::Camera camera;
         sd::Model car;
 
         void run(void);
