@@ -63,3 +63,9 @@ std::vector<sd::Vec3> &sd::Model::get_verts(void) {
 std::vector<sd::Vec3> &sd::Model::get_normals(void) {
     return normals;
 }
+
+void sd::Model::move(sd::Vec3 vec) {
+    pos.x += vec.x;
+    pos.y += vec.y;
+    pos.z += vec.z;
+}

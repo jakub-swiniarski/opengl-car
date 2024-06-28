@@ -53,7 +53,8 @@ void sd::App::render_model(sd::Model &m) {
 sd::App::App(void) 
     : cfg_manager("config.txt"),
       camera({ .x = 0.0f, .y = -0.5f, .z = 0.0f }, cfg_manager.get_config<float>("fov")),
-      car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 90.0f) {
+      car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 90.0f),
+      input_processor(&car) {
 
     if (cfg_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(
