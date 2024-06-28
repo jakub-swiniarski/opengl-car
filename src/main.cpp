@@ -25,13 +25,13 @@ int main(void) {
             throw sd::Exception("Failed to initialize GLFW.", true);
 
         sd::App game;
-    } catch (sd::Exception &e) {
+    } catch (const sd::Exception &e) {
         if (e.is_fatal()) {
             sd::log("Error", sd::color::red, e.what());
             return -1;
         } else
             sd::log("Warning", sd::color::yellow, e.what()); // FIXME: warnings are not displayed, only fatal errors that crash the game are shown (try multithreading?)
-    } catch (std::exception &e) {
+    } catch (const std::exception &e) {
         sd::log("Error", sd::color::red, e.what());
         return -1;
     }
