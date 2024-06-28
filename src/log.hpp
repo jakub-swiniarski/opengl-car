@@ -10,7 +10,7 @@ namespace sd {
         extern const std::string yellow;
     }
 
-    void log(std::string label, std::string col, const char *msg);
+    void log(std::string label, std::string col, std::string msg);
 }
 
 #endif // LOG_HPP
