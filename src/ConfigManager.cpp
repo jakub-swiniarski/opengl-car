@@ -40,7 +40,7 @@ std::string sd::ConfigManager::get_config(std::string key) { // TODO: add method
     if (config.find(key) == config.end()) {
         std::ostringstream error_msg;
         error_msg << "Failed to find " << key << " in config.";
-        throw Exception(error_msg.str(), false);
+        throw Exception(error_msg.str(), true);
     }
     
     return config[key];
