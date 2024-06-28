@@ -4,8 +4,8 @@
 
 #include "Model.hpp"
 
-sd::Model::Model(std::string filename, Vec3 pos) 
-    : pos(pos) {
+sd::Model::Model(std::string filename, Vec3 pos, GLfloat angle) 
+    : pos(pos), angle(angle) {
     std::ifstream obj_file;
     obj_file.open(filename);
 
@@ -50,6 +50,10 @@ sd::Model::Model(std::string filename, Vec3 pos)
 
 Vec3 &sd::Model::get_pos(void) {
     return pos;
+}
+
+GLfloat &sd::Model::get_angle(void) {
+    return angle;
 }
 
 std::vector<Vec3> &sd::Model::get_verts(void) {
