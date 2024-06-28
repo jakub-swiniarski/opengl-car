@@ -1,8 +1,9 @@
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
 
 #include "ConfigManager.hpp"
-#include "Exception.hpp"
+#include "log.hpp"
 
 void sd::ConfigManager::load_defaults(void) {
     config["window_width"]  = "1280";
@@ -15,7 +16,7 @@ void sd::ConfigManager::load_config(std::string filename) {
     std::ifstream file(filename);
 
     if (!file.is_open())
-        throw Exception("Failed to open config.txt.", false);
+        sd::log("Warning", sd::color::yellow, "Failed to open config.txt.");
     else {
         std::string line;
         while (std::getline(file, line)) {
@@ -40,7 +41,7 @@ std::string sd::ConfigManager::get_config(std::string key) { // TODO: add method
     if (config.find(key) == config.end()) {
         std::ostringstream error_msg;
         error_msg << "Failed to find " << key << " in config.";
-        throw Exception(error_msg.str(), true);
+        throw std::runtime_error(error_msg.str());
     }
     
     return config[key];
