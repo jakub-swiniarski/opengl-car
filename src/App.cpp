@@ -99,8 +99,8 @@ sd::App::App(void)
 
     glfwMakeContextCurrent(window);
     glEnable(GL_DEPTH_TEST);
-
     glfwSetKeyCallback(window, key_callback);
+    glfwSwapInterval(1);
 
     run();
 
