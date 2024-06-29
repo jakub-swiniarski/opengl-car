@@ -4,11 +4,14 @@
 #include <stdexcept>
 
 #include "App.hpp"
+#include "Car.hpp"
 
-static sd::Model car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 90.0f);
+static sd::Car car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 90.0f, 0.01f);
 
 void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
+        car.update();
+
         int width, height;
         glfwGetFramebufferSize(window, &width, &height);
         camera.update(width, height);
@@ -17,13 +20,13 @@ void sd::App::run(void) {
 
         glLoadIdentity();
         glTranslatef(
-            car.get_pos().x,
-            car.get_pos().y,
-            car.get_pos().z
+            car.get_model().get_pos().x,
+            car.get_model().get_pos().y,
+            car.get_model().get_pos().z
         );
-        glRotatef(car.get_angle(), 0.0f, 1.0f, 0.0f);
+        glRotatef(car.get_model().get_angle(), 0.0f, 1.0f, 0.0f);
 
-        render_model(car);
+        render_model(car.get_model());
 
         glfwSwapBuffers(window);
 
@@ -54,10 +57,16 @@ void sd::App::render_model(sd::Model &m) {
 
 void sd::App::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     // TODO: delta time
-    if (key == GLFW_KEY_W && action == GLFW_REPEAT)
-        car.move({ .x = 0.1f, .y = 0.0f, .z = 0.0f });
-    else if (key == GLFW_KEY_S && action == GLFW_REPEAT)
-        car.move({ .x = -0.1f, .y = 0.0f, .z = 0.0f });
+
+    if (action == GLFW_PRESS) {
+        if (key == GLFW_KEY_W)
+            car.set_movement_state(sd::MovementState::accel_forward);
+        else if (key == GLFW_KEY_S)
+            car.set_movement_state(sd::MovementState::accel_backward);
+    } else if (action == GLFW_RELEASE) {
+        if (key == GLFW_KEY_W || key == GLFW_KEY_S)
+            car.set_movement_state(sd::MovementState::idling);
+    }
 }
 
 sd::App::App(void) 
