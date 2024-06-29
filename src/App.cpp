@@ -5,6 +5,8 @@
 
 #include "App.hpp"
 
+static sd::Model car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 90.0f);
+
 void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
         int width, height;
@@ -50,11 +52,17 @@ void sd::App::render_model(sd::Model &m) {
     glEnd();
 }
 
+void sd::App::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    // TODO: delta time
+    if (key == GLFW_KEY_W && action == GLFW_REPEAT)
+        car.move({ .x = 0.1f, .y = 0.0f, .z = 0.0f });
+    else if (key == GLFW_KEY_S && action == GLFW_REPEAT)
+        car.move({ .x = -0.1f, .y = 0.0f, .z = 0.0f });
+}
+
 sd::App::App(void) 
     : cfg_manager("config.txt"),
-      camera({ .x = 0.0f, .y = -0.5f, .z = 0.0f }, cfg_manager.get_config<float>("fov")),
-      car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 90.0f),
-      input_processor(&car) {
+      camera({ .x = 0.0f, .y = -0.5f, .z = 0.0f }, cfg_manager.get_config<float>("fov")) {
 
     if (cfg_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(
@@ -81,6 +89,8 @@ sd::App::App(void)
 
     glfwMakeContextCurrent(window);
     glEnable(GL_DEPTH_TEST);
+
+    glfwSetKeyCallback(window, key_callback);
 
     run();
 
