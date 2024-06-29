@@ -1,4 +1,5 @@
 #include <GLFW/glfw3.h>
+#include <exception>
 #include <stdexcept>
 
 #include "App.hpp"
@@ -10,7 +11,7 @@ int main(void) {
             throw std::runtime_error("Failed to initialize GLFW.");
 
         sd::App game;
-    } catch (const std::runtime_error &e) {
+    } catch (const std::exception &e) {
         sd::log("Error", sd::color::red, e.what());
         return -1;
     }
