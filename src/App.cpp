@@ -6,7 +6,7 @@
 #include "App.hpp"
 #include "Car.hpp"
 
-static sd::Car car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 90.0f, 0.01f);
+static sd::Car car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 90.0f, 0.005f);
 
 void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {

@@ -15,7 +15,7 @@ void sd::Car::update(void) {
     && speed < 0.01f && speed > -0.01f)
         speed = 0.0f;
     else
-        speed += (speed > 0) ? -accel / 2.5f : accel / 2.5f;
+        speed += (speed > 0) ? -accel / 5.0f : accel / 5.0f;
 }
 
 void sd::Car::set_movement_state(sd::MovementState ms) {
