@@ -10,6 +10,12 @@ void sd::Car::update(void) {
         speed -= accel;
 
     model.move({ .x = speed, .y = 0.0f, .z = 0.0f });
+
+    if (movement_state == sd::MovementState::idling
+    && speed < 0.01f && speed > -0.01f)
+        speed = 0.0f;
+    else
+        speed += (speed > 0) ? -accel / 2.5f : accel / 2.5f;
 }
 
 void sd::Car::set_movement_state(sd::MovementState ms) {
