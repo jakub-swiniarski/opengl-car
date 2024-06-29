@@ -19,12 +19,6 @@ void sd::App::run(void) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glLoadIdentity();
-        glTranslatef(
-            car.get_model().get_pos().x,
-            car.get_model().get_pos().y,
-            car.get_model().get_pos().z
-        );
-        glRotatef(car.get_model().get_angle(), 0.0f, 1.0f, 0.0f);
 
         render_model(car.get_model());
 
@@ -35,6 +29,13 @@ void sd::App::run(void) {
 }
 
 void sd::App::render_model(sd::Model &m) {
+    glTranslatef(
+        m.get_pos().x,
+        m.get_pos().y,
+        m.get_pos().z
+    );
+    glRotatef(m.get_angle(), 0.0f, 1.0f, 0.0f);
+
     GLfloat col[3] = { 1.0f, 1.0f, 1.0f };
 
     glBegin(GL_QUADS);
