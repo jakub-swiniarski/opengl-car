@@ -71,6 +71,8 @@ void sd::App::key_callback(GLFWwindow* window, int key, int scancode, int action
     } else if (action == GLFW_RELEASE) {
         if (key == GLFW_KEY_W || key == GLFW_KEY_S)
             car.set_movement_state(sd::MovementState::idle);
+        if (key == GLFW_KEY_A || key == GLFW_KEY_D)
+            car.set_turning_state(sd::TurningState::idle);
     }
 }
 
