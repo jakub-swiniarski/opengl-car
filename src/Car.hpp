@@ -12,9 +12,16 @@ namespace sd {
         accel_backward
     };
 
+    enum class TurningState {
+        idle,
+        turning_right,
+        turning_left
+    };
+
     class Car {
         sd::Model model;
         sd::MovementState movement_state;
+        sd::TurningState turning_state;
         GLfloat speed;
         const GLfloat accel;
 
