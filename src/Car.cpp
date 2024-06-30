@@ -1,4 +1,5 @@
 #include "Car.hpp"
+#include <cmath>
 
 sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat angle, GLfloat accel)
     : model(filename, pos, angle), 
@@ -19,7 +20,11 @@ void sd::Car::update(void) {
             model.turn(-1.0f);
     }
 
-    model.move({ .x = speed, .y = 0.0f, .z = 0.0f });
+    model.move({
+        .x = static_cast<GLfloat>(speed * std::sin(model.get_angle() * M_PI / 180.0f)),
+        .y = 0.0f,
+        .z = static_cast<GLfloat>(speed * std::cos(model.get_angle() * M_PI / 180.0f))
+    });
 
     if (movement_state == sd::MovementState::idle
     && speed < 0.01f && speed > -0.01f)
