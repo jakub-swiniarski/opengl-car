@@ -69,3 +69,7 @@ void sd::Model::move(sd::Vec3 vec) {
     pos.y += vec.y;
     pos.z += vec.z;
 }
+
+void sd::Model::turn(GLfloat angle) {
+    this->angle += angle;
+}
