@@ -7,7 +7,7 @@
 
 namespace sd {
     enum class MovementState {
-        idling,
+        idle,
         accel_forward,
         accel_backward
     };
