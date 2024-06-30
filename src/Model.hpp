@@ -21,6 +21,7 @@ namespace sd {
         const std::vector<sd::Vec3> &get_verts(void) const;
         const std::vector<sd::Vec3> &get_normals(void) const;
         void move(sd::Vec3 vec);
+        void turn(GLfloat angle);
     };
 }
 

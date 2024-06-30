@@ -28,8 +28,9 @@ namespace sd {
     public:
         Car(std::string filename, sd::Vec3 pos, GLfloat angle, GLfloat accel);
         void update(void); // TODO: move this to Model class or some Movable derivative of Model
-        void set_movement_state(sd::MovementState ms);
         const sd::Model &get_model(void) const;
+        void set_movement_state(sd::MovementState ms);
+        void set_turning_state(sd::TurningState ts);
     };
 }
 
