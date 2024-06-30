@@ -1,7 +1,10 @@
 #include "Car.hpp"
 
 sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat angle, GLfloat accel)
-    : model(filename, pos, angle), accel(accel), speed(0.0f) {}
+    : model(filename, pos, angle), 
+    accel(accel), speed(0.0f),
+    movement_state(sd::MovementState::idle),
+    turning_state(sd::TurningState::idle) {}
 
 void sd::Car::update(void) {
     if (movement_state == sd::MovementState::accel_forward)
