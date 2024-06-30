@@ -14,7 +14,7 @@ namespace sd {
         sd::Camera camera;
 
         void run(void);
-        void render_model(sd::Model &m);
+        void render_model(const sd::Model &m) const;
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
     public:

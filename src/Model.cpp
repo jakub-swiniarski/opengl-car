@@ -48,19 +48,19 @@ sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat angle)
         throw std::runtime_error("No vertices found.");
 }
 
-sd::Vec3 &sd::Model::get_pos(void) {
+const sd::Vec3 &sd::Model::get_pos(void) const {
     return pos;
 }
 
-GLfloat &sd::Model::get_angle(void) {
+const GLfloat &sd::Model::get_angle(void) const {
     return angle;
 }
 
-std::vector<sd::Vec3> &sd::Model::get_verts(void) {
+const std::vector<sd::Vec3> &sd::Model::get_verts(void) const {
     return verts;
 }
 
-std::vector<sd::Vec3> &sd::Model::get_normals(void) {
+const std::vector<sd::Vec3> &sd::Model::get_normals(void) const {
     return normals;
 }
 

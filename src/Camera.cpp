@@ -5,7 +5,7 @@
 sd::Camera::Camera(sd::Vec3 pos, GLfloat fov)
     : pos(pos), fov(fov) {}
 
-void sd::Camera::update(int width, int height) {
+void sd::Camera::update(int width, int height) const {
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

@@ -28,7 +28,7 @@ void sd::App::run(void) {
     }
 }
 
-void sd::App::render_model(sd::Model &m) {
+void sd::App::render_model(const sd::Model &m) const {
     glTranslatef(
         m.get_pos().x,
         m.get_pos().y,
