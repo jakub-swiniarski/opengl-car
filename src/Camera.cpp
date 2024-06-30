@@ -14,7 +14,7 @@ void sd::Camera::update(int width, int height) const {
     GLfloat aspect_ratio = static_cast<GLfloat>(width) / static_cast<GLfloat>(height);
     GLfloat near_plane = 0.1f;
     GLfloat far_plane = 100.0f;
-    GLfloat f = 1.0f / tan(fov * 0.5f * M_PI / 180.0f);
+    GLfloat f = 1.0f / std::tan(fov * 0.5f * M_PI / 180.0f);
     GLfloat projection_matrix[] = {
         f / aspect_ratio, 0.0f, 0.0f, 0.0f,
         0.0f, f, 0.0f, 0.0f,
