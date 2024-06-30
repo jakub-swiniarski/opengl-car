@@ -11,7 +11,7 @@ void sd::Car::update(void) {
 
     model.move({ .x = speed, .y = 0.0f, .z = 0.0f });
 
-    if (movement_state == sd::MovementState::idling
+    if (movement_state == sd::MovementState::idle
     && speed < 0.01f && speed > -0.01f)
         speed = 0.0f;
     else
