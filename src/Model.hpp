@@ -16,10 +16,10 @@ namespace sd {
 
     public:
         Model(std::string filename, sd::Vec3 pos, GLfloat angle);
-        sd::Vec3 &get_pos(void);
-        GLfloat &get_angle(void);
-        std::vector<sd::Vec3> &get_verts(void);
-        std::vector<sd::Vec3> &get_normals(void);
+        const sd::Vec3 &get_pos(void) const;
+        const GLfloat &get_angle(void) const;
+        const std::vector<sd::Vec3> &get_verts(void) const;
+        const std::vector<sd::Vec3> &get_normals(void) const;
         void move(sd::Vec3 vec);
     };
 }

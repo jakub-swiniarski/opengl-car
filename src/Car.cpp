@@ -22,6 +22,6 @@ void sd::Car::set_movement_state(sd::MovementState ms) {
     movement_state = ms;
 }
 
-sd::Model &sd::Car::get_model(void) {
+const sd::Model &sd::Car::get_model(void) const {
     return model;
 }

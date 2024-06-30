@@ -12,7 +12,7 @@ namespace sd {
 
     public:
         Camera(sd::Vec3 pos, GLfloat fov);
-        void update(int width, int height);
+        void update(int width, int height) const;
     };
 }
 

@@ -22,7 +22,7 @@ namespace sd {
         Car(std::string filename, sd::Vec3 pos, GLfloat angle, GLfloat accel);
         void update(void); // TODO: move this to Model class or some Movable derivative of Model
         void set_movement_state(sd::MovementState ms);
-        sd::Model &get_model(void);
+        const sd::Model &get_model(void) const;
     };
 }
 
