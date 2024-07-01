@@ -13,17 +13,10 @@ void sd::Car::update(void) {
     else if (movement_state == sd::MovementState::accel_backward)
         speed -= accel;
 
-    if (movement_state == sd::MovementState::accel_forward || speed > 0.0f) {
-        if (turning_state == sd::TurningState::turning_right)
-            model.turn(-1.0f);
-        else if (turning_state == sd::TurningState::turning_left)
-            model.turn(1.0f);
-    } else if (movement_state == sd::MovementState::accel_backward || speed < 0.0f) {
-        if (turning_state == sd::TurningState::turning_right)
-            model.turn(1.0f);
-        else if (turning_state == sd::TurningState::turning_left)
-            model.turn(-1.0f);
-    }
+    if (turning_state == sd::TurningState::turning_right)
+        model.turn(-2.0f * speed);
+    else if (turning_state == sd::TurningState::turning_left)
+        model.turn(2.0f * speed);
 
     model.move({
         .x = static_cast<GLfloat>(speed * std::sin(model.get_angle() * M_PI / 180.0f)),
