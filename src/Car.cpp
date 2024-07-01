@@ -8,23 +8,32 @@ sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat angle, GLfloat accel)
     turning_state(sd::TurningState::idle) {}
 
 void sd::Car::update(void) {
-    if (movement_state != sd::MovementState::idle) {
-        if (movement_state == sd::MovementState::accel_forward) {
-            speed += accel;
+    //TODO: clean this mess up
+    if (movement_state == sd::MovementState::accel_forward) {
+        speed += accel;
 
-            if (turning_state == sd::TurningState::turning_left)
-                model.turn(1.0f);
-            else if (turning_state == sd::TurningState::turning_right)
-                model.turn(-1.0f);
-        } else if (movement_state == sd::MovementState::accel_backward) {
-            speed -= accel;
+        if (turning_state == sd::TurningState::turning_left)
+            model.turn(1.0f);
+        else if (turning_state == sd::TurningState::turning_right)
+            model.turn(-1.0f);
+    } else if (movement_state == sd::MovementState::accel_backward) {
+        speed -= accel;
 
-            if (turning_state == sd::TurningState::turning_left)
-                model.turn(-1.0f);
-            else if (turning_state == sd::TurningState::turning_right)
-                model.turn(1.0f);
-        }
-
+        if (turning_state == sd::TurningState::turning_left)
+            model.turn(-1.0f);
+        else if (turning_state == sd::TurningState::turning_right)
+            model.turn(1.0f);
+    }
+    else if (speed > 0.0f) {
+        if (turning_state == sd::TurningState::turning_left)
+            model.turn(1.0f);
+        else if (turning_state == sd::TurningState::turning_right)
+            model.turn(-1.0f);
+    } else if (speed < 0.0f) {
+        if (turning_state == sd::TurningState::turning_left)
+            model.turn(-1.0f);
+        else if (turning_state == sd::TurningState::turning_right)
+            model.turn(1.0f);
     }
 
     model.move({
