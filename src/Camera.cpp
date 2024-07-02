@@ -9,7 +9,6 @@ void sd::Camera::update(int width, int height) const {
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glTranslatef(pos.x, pos.y, pos.z);
 
     GLfloat aspect_ratio = static_cast<GLfloat>(width) / static_cast<GLfloat>(height);
     GLfloat near_plane = 0.1f;
@@ -24,4 +23,6 @@ void sd::Camera::update(int width, int height) const {
 
     glMultMatrixf(projection_matrix);
     glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glTranslatef(pos.x, pos.y, pos.z);
 }

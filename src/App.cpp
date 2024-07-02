@@ -10,20 +10,18 @@ static sd::Car car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }
 
 void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
-        car.update();
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
         int width, height;
         glfwGetFramebufferSize(window, &width, &height);
         camera.update(width, height);
-
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        glLoadIdentity();
+        car.update();
 
         render_model(car.get_model());
 
         glfwSwapBuffers(window);
-
         glfwPollEvents();
     }
 }
