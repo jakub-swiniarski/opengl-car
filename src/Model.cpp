@@ -38,8 +38,8 @@ sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat angle)
                 int index_v = std::stoi(data.substr(0, pos));
                 verts.push_back(buffer_v[index_v - 1]);
 
-                int index_vn = std::stoi(data.substr(pos + 2));
-                normals.push_back(buffer_vn[index_vn - 1]);
+                //int index_vn = std::stoi(data.substr(pos + 2));
+                //normals.push_back(buffer_vn[index_vn - 1]);
             }
         }
     }
