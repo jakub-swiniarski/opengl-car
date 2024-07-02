@@ -9,6 +9,7 @@ namespace sd {
     class Camera {
         sd::Vec3 pos;
         GLfloat fov;
+        GLfloat pitch, yaw;
 
     public:
         Camera(sd::Vec3 pos, GLfloat fov);
