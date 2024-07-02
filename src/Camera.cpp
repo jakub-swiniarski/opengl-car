@@ -25,4 +25,5 @@ void sd::Camera::update(int width, int height) const {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glTranslatef(pos.x, pos.y, pos.z);
+    glRotatef(15.0f, 1.0f, 0.0f, 0.0f); // TODO: pitch yaw
 }
