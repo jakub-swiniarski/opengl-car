@@ -14,6 +14,8 @@ int main(void) {
     } catch (const std::exception &e) {
         sd::log("Error", sd::color::red, e.what());
         return -1;
+    } catch (...) {
+        throw std::runtime_error("Unknown error");
     }
 
     return 0;
