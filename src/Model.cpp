@@ -4,8 +4,8 @@
 
 #include "Model.hpp"
 
-sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat angle) 
-    : pos(pos), angle(angle) {
+sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat yaw) 
+    : pos(pos), yaw(yaw) {
     std::ifstream obj_file;
     obj_file.open(filename);
 
@@ -52,8 +52,8 @@ const sd::Vec3 &sd::Model::get_pos(void) const {
     return pos;
 }
 
-const GLfloat &sd::Model::get_angle(void) const {
-    return angle;
+const GLfloat &sd::Model::get_yaw(void) const {
+    return yaw;
 }
 
 const std::vector<sd::Vec3> &sd::Model::get_verts(void) const {
@@ -70,6 +70,6 @@ void sd::Model::move(sd::Vec3 vec) {
     pos.z += vec.z;
 }
 
-void sd::Model::turn(GLfloat angle) {
-    this->angle += angle;
+void sd::Model::turn(GLfloat yaw) {
+    this->yaw += yaw;
 }
