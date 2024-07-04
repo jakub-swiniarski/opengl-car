@@ -1,8 +1,8 @@
 #include "Car.hpp"
 #include <cmath>
 
-sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat angle, GLfloat accel)
-    : model(filename, pos, angle), 
+sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel)
+    : model(filename, pos, yaw), 
     accel(accel), speed(0.0f),
     movement_state(sd::MovementState::idle),
     turning_state(sd::TurningState::idle) {}
@@ -19,9 +19,9 @@ void sd::Car::update(void) {
         model.turn(2.0f * speed);
 
     model.move({
-        .x = static_cast<GLfloat>(speed * std::sin(model.get_angle() * M_PI / 180.0f)),
+        .x = static_cast<GLfloat>(speed * std::sin(model.get_yaw() * M_PI / 180.0f)),
         .y = 0.0f,
-        .z = static_cast<GLfloat>(speed * std::cos(model.get_angle() * M_PI / 180.0f))
+        .z = static_cast<GLfloat>(speed * std::cos(model.get_yaw() * M_PI / 180.0f))
     });
 
     if (movement_state == sd::MovementState::idle

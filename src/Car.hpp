@@ -26,7 +26,7 @@ namespace sd {
         const GLfloat accel;
 
     public:
-        Car(std::string filename, sd::Vec3 pos, GLfloat angle, GLfloat accel);
+        Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel);
         void update(void); // TODO: move this to Model class or some Movable derivative of Model
         const sd::Model &get_model(void) const;
         void set_movement_state(sd::MovementState ms);

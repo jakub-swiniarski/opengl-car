@@ -32,7 +32,7 @@ void sd::App::render_model(const sd::Model &m) const {
         m.get_pos().y,
         m.get_pos().z
     );
-    glRotatef(m.get_angle(), 0.0f, 1.0f, 0.0f);
+    glRotatef(m.get_yaw(), 0.0f, 1.0f, 0.0f);
 
     GLfloat col[3] = { 1.0f, 1.0f, 1.0f };
 
