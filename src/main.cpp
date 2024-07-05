@@ -13,10 +13,10 @@ int main(void) {
         sd::App game;
     } catch (const std::exception &e) {
         sd::log("Error", sd::color::red, e.what());
-        return -1;
+        return EXIT_FAILURE;
     } catch (...) {
         throw std::runtime_error("Unknown error");
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
