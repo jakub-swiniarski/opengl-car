@@ -60,24 +60,23 @@ void sd::App::key_callback(GLFWwindow* window, int key, int scancode, int action
 
     sd::Keys keys = car.get_keys(); // this prevents keys from defaulting to 0 if no action happened
 
-    // TODO: if else?
     if (action == GLFW_PRESS) {
         if (key == GLFW_KEY_W)
             keys.accel_forward = 1;
-        if (key == GLFW_KEY_S)
+        else if (key == GLFW_KEY_S)
             keys.accel_backward = 1;
-        if (key == GLFW_KEY_A)
+        else if (key == GLFW_KEY_A)
             keys.turn_left = 1;
-        if (key == GLFW_KEY_D)
+        else if (key == GLFW_KEY_D)
             keys.turn_right = 1;
     } else if (action == GLFW_RELEASE) {
         if (key == GLFW_KEY_W)
             keys.accel_forward = 0;
-        if (key == GLFW_KEY_S)
+        else if (key == GLFW_KEY_S)
             keys.accel_backward = 0;
-        if (key == GLFW_KEY_A)
+        else if (key == GLFW_KEY_A)
             keys.turn_left = 0;
-        if (key == GLFW_KEY_D)
+        else if (key == GLFW_KEY_D)
             keys.turn_right = 0;
     }
 
