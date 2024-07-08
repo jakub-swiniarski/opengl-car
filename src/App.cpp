@@ -5,8 +5,9 @@
 
 #include "App.hpp"
 #include "Car.hpp"
+#include "Vec3.hpp"
 
-static sd::Car car("res/obj/chevrolet.obj", { .x = 0.0f, .y = 0.0f, .z = -8.0f }, 180.0f, 0.005f);
+static sd::Car car("res/obj/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 0.005f);
 
 void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
@@ -85,7 +86,7 @@ void sd::App::key_callback(GLFWwindow* window, int key, int scancode, int action
 
 sd::App::App(void) 
     : cfg_manager("config.txt"),
-      camera({ .x = 0.0f, .y = -3.0f, .z = 0.0f }, cfg_manager.get_config<float>("fov")) {
+      camera(sd::Vec3(0.0f, -3.0f, 0.0f), cfg_manager.get_config<float>("fov")) {
 
     if (cfg_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(

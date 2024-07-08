@@ -16,11 +16,11 @@ void sd::Car::update(void) {
     else if (keys.turn_left && !keys.turn_right)
         model.turn(2.0f * speed);
 
-    model.move({
-        .x = static_cast<GLfloat>(speed * std::sin(model.get_yaw() * M_PI / 180.0f)),
-        .y = 0.0f,
-        .z = static_cast<GLfloat>(speed * std::cos(model.get_yaw() * M_PI / 180.0f))
-    });
+    model.move(sd::Vec3(
+        static_cast<GLfloat>(speed * std::sin(model.get_yaw() * M_PI / 180.0f)),
+        0.0f,
+        static_cast<GLfloat>(speed * std::cos(model.get_yaw() * M_PI / 180.0f))
+    ));
 
     if (!keys.accel_forward && !keys.accel_backward
     && speed < 0.01f && speed > -0.01f)

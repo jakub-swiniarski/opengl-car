@@ -6,6 +6,9 @@
 namespace sd {
     struct Vec3 {
         GLfloat x, y, z;
+
+        Vec3(void);
+        Vec3(GLfloat x, GLfloat y, GLfloat z);
     };
 }
 
