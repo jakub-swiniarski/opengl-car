@@ -28,6 +28,6 @@ const sd::Keys& sd::Car::get_keys(void) const {
     return keys;
 }
 
-void sd::Car::set_keys(sd::Keys &keys) {
+void sd::Car::set_keys(sd::Keys& keys) {
     this->keys = keys;
 }

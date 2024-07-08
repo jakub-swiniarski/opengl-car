@@ -16,7 +16,7 @@ namespace sd {
         
         void            update(void) override;
         const sd::Keys& get_keys(void) const;
-        void            set_keys(sd::Keys &keys);
+        void            set_keys(sd::Keys& keys);
     };
 }
 
