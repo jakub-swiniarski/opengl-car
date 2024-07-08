@@ -1,21 +1,25 @@
 #include "Car.hpp"
 #include <cmath>
 
+sd::Keys::Keys(void) 
+    : accel_forward(0),
+      accel_backward(0),
+      turn_right(0),
+      turn_left(0) {}
+
 sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel)
     : model(filename, pos, yaw), 
-    accel(accel), speed(0.0f),
-    movement_state(sd::MovementState::idle),
-    turning_state(sd::TurningState::idle) {}
+      accel(accel), speed(0.0f) {}
 
 void sd::Car::update(void) {
-    if (movement_state == sd::MovementState::accel_forward)
+    if (keys.accel_forward && !keys.accel_backward)
         speed += accel;
-    else if (movement_state == sd::MovementState::accel_backward)
+    else if (keys.accel_backward && !keys.accel_forward)
         speed -= accel;
 
-    if (turning_state == sd::TurningState::turning_right)
+    if (keys.turn_right && !keys.turn_left)
         model.turn(-2.0f * speed);
-    else if (turning_state == sd::TurningState::turning_left)
+    else if (keys.turn_left && !keys.turn_right)
         model.turn(2.0f * speed);
 
     model.move({
@@ -24,7 +28,7 @@ void sd::Car::update(void) {
         .z = static_cast<GLfloat>(speed * std::cos(model.get_yaw() * M_PI / 180.0f))
     });
 
-    if (movement_state == sd::MovementState::idle
+    if (!keys.accel_forward && !keys.accel_backward
     && speed < 0.01f && speed > -0.01f)
         speed = 0.0f;
     else
@@ -35,10 +39,14 @@ const sd::Model &sd::Car::get_model(void) const {
     return model;
 }
 
-void sd::Car::set_movement_state(sd::MovementState ms) {
-    movement_state = ms;
+const sd::Keys &sd::Car::get_keys(void) const {
+    return keys;
 }
 
-void sd::Car::set_turning_state(sd::TurningState ts) {
-    turning_state = ts;
+void sd::Car::set_keys(sd::Keys &keys) {
+    // TODO: fix later
+    this->keys.accel_forward = keys.accel_forward;
+    this->keys.accel_backward = keys.accel_backward;
+    this->keys.turn_right = keys.turn_right;
+    this->keys.turn_left = keys.turn_left;
 }

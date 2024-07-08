@@ -6,31 +6,27 @@
 #include "Model.hpp"
 
 namespace sd {
-    enum class MovementState {
-        idle,
-        accel_forward,
-        accel_backward
-    };
+    struct Keys { // TODO: find a better name
+        unsigned int accel_forward : 1;
+        unsigned int accel_backward : 1;
+        unsigned int turn_right : 1;
+        unsigned int turn_left : 1;
 
-    enum class TurningState {
-        idle,
-        turning_right,
-        turning_left
+        Keys(void);
     };
 
     class Car {
         sd::Model model;
-        sd::MovementState movement_state;
-        sd::TurningState turning_state;
         GLfloat speed;
         const GLfloat accel;
+        sd::Keys keys;
 
     public:
         Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel);
         void update(void); // TODO: move this to Model class or some Movable derivative of Model
         const sd::Model &get_model(void) const;
-        void set_movement_state(sd::MovementState ms);
-        void set_turning_state(sd::TurningState ts);
+        const sd::Keys &get_keys(void) const;
+        void set_keys(sd::Keys &keys);
     };
 }
 
