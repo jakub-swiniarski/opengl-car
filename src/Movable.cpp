@@ -12,5 +12,4 @@ void sd::Movable::update(void) {
         0.0f,
         static_cast<GLfloat>(speed * std::cos(model.get_yaw() * M_PI / 180.0f))
     ));
-
 }

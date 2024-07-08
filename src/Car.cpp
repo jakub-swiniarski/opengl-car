@@ -24,7 +24,7 @@ void sd::Car::update(void) {
         speed += (speed > 0) ? -accel / 5.0f : accel / 5.0f;
 }
 
-const sd::Keys &sd::Car::get_keys(void) const {
+const sd::Keys& sd::Car::get_keys(void) const {
     return keys;
 }
 

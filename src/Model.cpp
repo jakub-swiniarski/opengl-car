@@ -5,7 +5,8 @@
 #include "Model.hpp"
 
 sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat yaw) 
-    : pos(pos), yaw(yaw) {
+    : pos(pos),
+      yaw(yaw) {
     std::ifstream obj_file;
     obj_file.open(filename);
 
@@ -18,7 +19,7 @@ sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat yaw)
     std::string line;
     while (std::getline(obj_file, line)) {
         std::istringstream iss(line);
-        std::string mode;
+        std::string        mode;
         iss >> mode;
 
         if (mode == "v") {
@@ -33,9 +34,9 @@ sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat yaw)
             std::string data;
             for (int i = 0; i < 4; i++) {
                 iss >> data;
-                std::size_t pos = data.find('/');
+                std::size_t pos     = data.find('/');
+                int         index_v = std::stoi(data.substr(0, pos));
 
-                int index_v = std::stoi(data.substr(0, pos));
                 verts.push_back(buffer_v[index_v - 1]);
 
                 //int index_vn = std::stoi(data.substr(pos + 2));
@@ -48,19 +49,19 @@ sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat yaw)
         throw std::runtime_error("No vertices found.");
 }
 
-const sd::Vec3 &sd::Model::get_pos(void) const {
+const sd::Vec3& sd::Model::get_pos(void) const {
     return pos;
 }
 
-const GLfloat &sd::Model::get_yaw(void) const {
+const GLfloat& sd::Model::get_yaw(void) const {
     return yaw;
 }
 
-const std::vector<sd::Vec3> &sd::Model::get_verts(void) const {
+const std::vector<sd::Vec3>& sd::Model::get_verts(void) const {
     return verts;
 }
 
-const std::vector<sd::Vec3> &sd::Model::get_normals(void) const {
+const std::vector<sd::Vec3>& sd::Model::get_normals(void) const {
     return normals;
 }
 
