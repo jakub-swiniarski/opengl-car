@@ -2,7 +2,7 @@
 #include <cmath>
 
 sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel)
-    : model(filename, pos, yaw), 
+    : Renderable(filename, pos, yaw), 
       accel(accel), speed(0.0f) {}
 
 void sd::Car::update(void) {
@@ -27,10 +27,6 @@ void sd::Car::update(void) {
         speed = 0.0f;
     else
         speed += (speed > 0) ? -accel / 5.0f : accel / 5.0f;
-}
-
-const sd::Model &sd::Car::get_model(void) const {
-    return model;
 }
 
 const sd::Keys &sd::Car::get_keys(void) const {
