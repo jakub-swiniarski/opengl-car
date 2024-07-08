@@ -3,18 +3,10 @@
 
 #include <GL/gl.h>
 
+#include "Keys.hpp"
 #include "Model.hpp"
 
 namespace sd {
-    struct Keys { // TODO: find a better name
-        unsigned int accel_forward : 1;
-        unsigned int accel_backward : 1;
-        unsigned int turn_right : 1;
-        unsigned int turn_left : 1;
-
-        Keys(void);
-    };
-
     class Car {
         sd::Model model;
         GLfloat speed;
