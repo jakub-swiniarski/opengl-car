@@ -20,7 +20,8 @@ void sd::ConfigManager::load_config(std::string filename) {
     else {
         std::string line;
         while (std::getline(file, line)) {
-            std::string key, value;
+            std::string key;
+            std::string value;
 
             std::istringstream iss(line);
             std::getline(iss, key, ':');

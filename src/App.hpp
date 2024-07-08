@@ -9,12 +9,12 @@ class GLFWwindow;
 
 namespace sd {
     class App {
-        GLFWwindow *window;
+        GLFWwindow*       window;
         sd::ConfigManager cfg_manager;
-        sd::Camera camera;
+        sd::Camera        camera;
 
-        void run(void);
-        void render_model(const sd::Model &m) const;
+        void        run(void);
+        void        render_model(const sd::Model &m) const;
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
     public:

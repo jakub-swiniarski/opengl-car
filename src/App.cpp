@@ -27,7 +27,7 @@ void sd::App::run(void) {
     }
 }
 
-void sd::App::render_model(const sd::Model &m) const {
+void sd::App::render_model(const sd::Model& m) const {
     glTranslatef(
         m.get_pos().x,
         m.get_pos().y,
@@ -39,10 +39,10 @@ void sd::App::render_model(const sd::Model &m) const {
 
     glBegin(GL_QUADS);
 
-    /*for (const auto &vn : m.get_normals())
+    /*for (const auto& vn : m.get_normals())
         glNormal3f(vn.x, vn.y, vn.z); */
-
-    for (const auto &v : m.get_verts()) {
+ 
+    for (const auto& v : m.get_verts()) {
         glColor3f(col[0], col[1], col[2]);
         glVertex3f(v.x, v.y, v.z);
 

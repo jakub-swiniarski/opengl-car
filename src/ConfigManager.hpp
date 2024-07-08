@@ -7,16 +7,17 @@
 namespace sd {
     class ConfigManager {
         std::unordered_map<std::string, std::string> config;
-        std::string filename;
+        std::string                                  filename;
 
         void load_defaults(void);
         void load_config(std::string filename);
 
     public:
         ConfigManager(std::string filename);
-        std::string get_config_s(std::string key);
+
+        std::string         get_config_s(std::string key);
         template<class T>
-        T get_config(std::string key);
+        T                   get_config(std::string key);
     };
 }
 
