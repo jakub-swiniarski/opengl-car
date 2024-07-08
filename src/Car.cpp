@@ -1,11 +1,12 @@
 #include "Car.hpp"
-#include <cmath>
 
 sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel)
-    : Renderable(filename, pos, yaw), 
-      accel(accel), speed(0.0f) {}
+    : Movable(filename, pos, yaw), 
+      accel(accel) {}
 
 void sd::Car::update(void) {
+    Movable::update();
+
     if (keys.accel_forward && !keys.accel_backward)
         speed += accel;
     else if (keys.accel_backward && !keys.accel_forward)
@@ -15,12 +16,6 @@ void sd::Car::update(void) {
         model.turn(-2.0f * speed);
     else if (keys.turn_left && !keys.turn_right)
         model.turn(2.0f * speed);
-
-    model.move(sd::Vec3(
-        static_cast<GLfloat>(speed * std::sin(model.get_yaw() * M_PI / 180.0f)),
-        0.0f,
-        static_cast<GLfloat>(speed * std::cos(model.get_yaw() * M_PI / 180.0f))
-    ));
 
     if (!keys.accel_forward && !keys.accel_backward
     && speed < 0.01f && speed > -0.01f)
