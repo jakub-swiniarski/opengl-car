@@ -4,7 +4,7 @@
 #include <string>
 
 namespace sd {
-    namespace color { 
+    namespace color {
         extern const std::string reset;
         extern const std::string red;
         extern const std::string yellow;
