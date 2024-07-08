@@ -44,9 +44,5 @@ const sd::Keys &sd::Car::get_keys(void) const {
 }
 
 void sd::Car::set_keys(sd::Keys &keys) {
-    // TODO: fix later
-    this->keys.accel_forward = keys.accel_forward;
-    this->keys.accel_backward = keys.accel_backward;
-    this->keys.turn_right = keys.turn_right;
-    this->keys.turn_left = keys.turn_left;
+    this->keys = keys;
 }
