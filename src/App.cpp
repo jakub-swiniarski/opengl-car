@@ -7,8 +7,6 @@
 #include "Car.hpp"
 #include "Vec3.hpp"
 
-static sd::Car car("res/obj/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 0.005f);
-
 void sd::App::run(void) {
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -30,7 +28,8 @@ void sd::App::run(void) {
 sd::App::App(void) 
     : cfg_manager("config.txt"),
       camera(sd::Vec3(0.0f, -3.0f, 0.0f), cfg_manager.get_config<float>("fov")),
-      input_proc(&car) {
+      input_proc(&car),
+      car("res/obj/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 0.005f) {
 
     if (cfg_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(
