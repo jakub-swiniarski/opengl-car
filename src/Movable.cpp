@@ -2,10 +2,6 @@
 
 #include "Movable.hpp"
 
-sd::Movable::Movable(std::string filename, sd::Vec3 pos, GLfloat yaw)
-    : Renderable(filename, pos, yaw),
-      speed(0.0f) {}
-
 void sd::Movable::update(double mod) {
     model.move(sd::Vec3(
         static_cast<GLfloat>(speed * std::sin(model.get_yaw() * M_PI / 180.0f)) * mod,

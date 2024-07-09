@@ -6,10 +6,10 @@
 namespace sd {
     class Movable : public sd::Renderable {
     protected:
-        GLfloat speed;
+        GLfloat speed = 0.0f;
 
     public:
-        Movable(std::string filename, sd::Vec3 pos, GLfloat yaw);
+        using sd::Renderable::Renderable;
 
         virtual void update(double mod);
     };
