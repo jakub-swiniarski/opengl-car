@@ -4,8 +4,6 @@
 #include "InputProcessor.hpp"
 
 void sd::InputProcessor::update(int key, int scancode, int action, int mods) {
-    // TODO: delta time
-
     if (player == nullptr)
         return; //TODO: display warning
 
