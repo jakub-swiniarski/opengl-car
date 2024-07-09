@@ -8,7 +8,13 @@
 #include "Vec3.hpp"
 
 void sd::App::run(void) {
+    double last_time = glfwGetTime();
+
     while (!glfwWindowShouldClose(window)) {
+        double current_time = glfwGetTime();
+        double delta_time = current_time - last_time;
+        last_time = current_time;
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glMatrixMode(GL_MODELVIEW);
@@ -16,7 +22,7 @@ void sd::App::run(void) {
         int width, height;
         glfwGetFramebufferSize(window, &width, &height);
         camera.update(width, height);
-        car.update(); // TODO: movable manager? updates all from an std::vector
+        car.update(delta_time); // TODO: movable manager? updates all from an std::vector
 
         renderer.update();
 
@@ -29,7 +35,7 @@ sd::App::App(void)
     : cfg_manager("config.txt"),
       camera(sd::Vec3(0.0f, -3.0f, 0.0f), cfg_manager.get_config<float>("fov")),
       input_proc(&car),
-      car("res/obj/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 0.005f) {
+      car("res/obj/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 10.0f) {
 
     if (cfg_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(
