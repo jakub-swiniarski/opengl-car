@@ -4,7 +4,7 @@
 #include "Camera.hpp"
 #include "ConfigManager.hpp"
 #include "InputProcessor.hpp"
-#include "Model.hpp"
+#include "Renderer.hpp"
 
 class GLFWwindow;
 
@@ -14,9 +14,9 @@ namespace sd {
         sd::ConfigManager  cfg_manager;
         sd::Camera         camera;
         sd::InputProcessor input_proc;
+        sd::Renderer       renderer;
 
-        void        run(void);
-        void        render_model(const sd::Model& m) const;
+        void run(void);
 
     public:
         App(void);

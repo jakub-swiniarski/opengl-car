@@ -18,41 +18,13 @@ void sd::App::run(void) {
         int width, height;
         glfwGetFramebufferSize(window, &width, &height);
         camera.update(width, height);
-        car.update();
+        car.update(); // TODO: movable manager? updates all from an std::vector
 
-        render_model(car.get_model());
+        renderer.update();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-}
-
-void sd::App::render_model(const sd::Model& m) const {
-    glTranslatef(
-        m.get_pos().x,
-        m.get_pos().y,
-        m.get_pos().z
-    );
-    glRotatef(m.get_yaw(), 0.0f, 1.0f, 0.0f);
-
-    GLfloat col[3] = { 1.0f, 1.0f, 1.0f };
-
-    glBegin(GL_QUADS);
-
-    /*for (const auto& vn : m.get_normals())
-        glNormal3f(vn.x, vn.y, vn.z); */
- 
-    for (const auto& v : m.get_verts()) {
-        glColor3f(col[0], col[1], col[2]);
-        glVertex3f(v.x, v.y, v.z);
-
-        for (int i = 0; i < 3; i++) {
-            if (col[i] >= 0.000001) 
-                col[i] -= 0.000001;
-        }
-    }
-
-    glEnd();
 }
 
 sd::App::App(void) 
@@ -82,6 +54,8 @@ sd::App::App(void)
         glfwTerminate();
         throw std::runtime_error("Failed to initialize a window.");
     }
+
+    renderer.add_renderable(&car);
 
     glfwSetWindowUserPointer(window, &input_proc);
     glfwSetKeyCallback(window, sd::InputProcessor::key_callback);
