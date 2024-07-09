@@ -4,7 +4,7 @@
 #include "Renderable.hpp"
 #include "Renderer.hpp"
 
-void sd::Renderer::render_model(const sd::Model& model) {
+void sd::Renderer::render_model(const sd::Model& model) const {
     glTranslatef(
         model.get_pos().x,
         model.get_pos().y,
@@ -32,7 +32,7 @@ void sd::Renderer::render_model(const sd::Model& model) {
     glEnd();
 }
 
-void sd::Renderer::update(void) {
+void sd::Renderer::update(void) const {
     for (const auto& r : renderables)
         render_model(r->get_model());
 }
