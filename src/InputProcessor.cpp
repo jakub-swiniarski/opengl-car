@@ -33,7 +33,7 @@ void sd::InputProcessor::update(int key, int scancode, int action, int mods) {
 sd::InputProcessor::InputProcessor(sd::Car* player)
     : player(player) {}
 
-void sd::InputProcessor::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+void sd::InputProcessor::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     InputProcessor* input_proc = static_cast<InputProcessor*>(glfwGetWindowUserPointer(window));
     input_proc->update(key, scancode, action, mods);
 }
