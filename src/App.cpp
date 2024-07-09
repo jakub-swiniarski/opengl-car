@@ -55,49 +55,10 @@ void sd::App::render_model(const sd::Model& m) const {
     glEnd();
 }
 
-void sd::App::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    // TODO: delta time
-
-    sd::Keys keys = car.get_keys(); // this prevents keys from defaulting to 0 if no action happened
-
-    if (action == GLFW_PRESS) {
-        switch(key) {
-            case GLFW_KEY_W:
-                keys.accel_forward = 1;
-                break;
-            case GLFW_KEY_S:
-                keys.accel_backward = 1;
-                break;
-            case GLFW_KEY_A:
-                keys.turn_left = 1;
-                break;
-            case GLFW_KEY_D:
-                keys.turn_right = 1;
-                break;
-        }
-    } else if (action == GLFW_RELEASE) {
-        switch(key) {
-            case GLFW_KEY_W:
-                keys.accel_forward = 0;
-                break;
-            case GLFW_KEY_S:
-                keys.accel_backward = 0;
-                break;
-            case GLFW_KEY_A:
-                keys.turn_left = 0;
-                break;
-            case GLFW_KEY_D:
-                keys.turn_right = 0;
-                break;
-        }
-    }
-
-    car.set_keys(keys);
-}
-
 sd::App::App(void) 
     : cfg_manager("config.txt"),
-      camera(sd::Vec3(0.0f, -3.0f, 0.0f), cfg_manager.get_config<float>("fov")) {
+      camera(sd::Vec3(0.0f, -3.0f, 0.0f), cfg_manager.get_config<float>("fov")),
+      input_proc(&car) {
 
     if (cfg_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(
@@ -122,9 +83,11 @@ sd::App::App(void)
         throw std::runtime_error("Failed to initialize a window.");
     }
 
+    glfwSetWindowUserPointer(window, &input_proc);
+    glfwSetKeyCallback(window, sd::InputProcessor::key_callback);
+
     glfwMakeContextCurrent(window);
     glEnable(GL_DEPTH_TEST);
-    glfwSetKeyCallback(window, key_callback);
     glfwSwapInterval(1);
 
     run();
