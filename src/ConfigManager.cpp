@@ -16,7 +16,7 @@ void sd::ConfigManager::load_config(std::string filename) {
     std::ifstream file(filename);
 
     if (!file.is_open())
-        sd::log("Warning", sd::color::yellow, "Failed to open " + filename + ".");
+        sd::log(sd::LogType::warning, "Failed to open " + filename + ".");
     else {
         std::string line;
         while (std::getline(file, line)) {

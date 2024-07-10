@@ -12,7 +12,7 @@ int main(void) {
 
         sd::App game;
     } catch (const std::exception& e) {
-        sd::log("Error", sd::color::red, e.what());
+        sd::log(sd::LogType::error, e.what());
         glfwTerminate();
         return EXIT_FAILURE;
     } catch (...) {
