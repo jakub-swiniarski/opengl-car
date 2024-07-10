@@ -4,13 +4,12 @@
 #include <string>
 
 namespace sd {
-    namespace color {
-        extern const std::string reset;
-        extern const std::string red;
-        extern const std::string yellow;
-    }
+    enum class LogType {
+        warning,
+        error
+    };
 
-    void log(std::string label, std::string col, std::string msg);
+    void log(sd::LogType type, std::string msg);
 }
 
 #endif // LOG_HPP
