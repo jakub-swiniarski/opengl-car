@@ -1,11 +1,11 @@
 #include "Car.hpp"
 
 sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel)
-    : Movable(filename, pos, yaw), 
+    : sd::Movable(filename, pos, yaw), 
       accel(accel) {}
 
 void sd::Car::update(double mod) {
-    Movable::update(mod);
+    sd::Movable::update(mod);
 
     if (keys.accel_forward && !keys.accel_backward)
         speed += accel * mod;
