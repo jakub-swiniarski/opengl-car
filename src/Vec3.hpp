@@ -11,6 +11,8 @@ namespace sd {
 
         Vec3(void);
         Vec3(GLfloat x, GLfloat y, GLfloat z);
+
+        GLfloat get_distance(sd::Vec3 vec);
     };
 }
 
