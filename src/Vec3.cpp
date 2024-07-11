@@ -12,7 +12,7 @@ sd::Vec3::Vec3(GLfloat x, GLfloat y, GLfloat z)
       y(y),
       z(z) {}
 
-GLfloat sd::Vec3::get_distance(sd::Vec3 vec) {
+GLfloat sd::Vec3::get_distance(sd::Vec3 vec) const {
     return std::sqrt(
         pow((vec.x - x), 2) +
         pow((vec.y - y), 2) +
