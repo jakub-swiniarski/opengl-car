@@ -68,7 +68,7 @@ int sd::ConfigManager::get_config<int>(std::string key) {
 
 template<>
 float sd::ConfigManager::get_config<float>(std::string key) {
-    int value = std::stof(config_default[key]);
+    float value = std::stof(config_default[key]);
 
     if (config_custom.find(key) != config_custom.end()) {
         try {
