@@ -5,19 +5,25 @@
 #include "ConfigManager.hpp"
 #include "log.hpp"
 
-void sd::ConfigManager::load_defaults(void) {
+sd::CfgType sd::ConfigManager::load_default(void) {
+    sd::CfgType config;
+
     config["window_width"]  = "1280";
     config["window_height"] = "720";
     config["fullscreen"]    = "0";
     config["fov"]           = "90.0";
+
+    return config;
 }
 
-void sd::ConfigManager::load_config(std::string filename) {
+sd::CfgType sd::ConfigManager::load_custom(std::string filename) {
+    sd::CfgType   config;
     std::ifstream file(filename);
 
-    if (!file.is_open())
+    if (!file.is_open()) {
         sd::log(sd::LogType::warning, "Failed to open " + filename + ".");
-    else {
+        config = load_default();
+    } else {
         std::string line;
         while (std::getline(file, line)) {
             std::string key;
@@ -30,19 +36,21 @@ void sd::ConfigManager::load_config(std::string filename) {
             config[key] = value;
         }
     }
+
+    return config;
 }
 
 sd::ConfigManager::ConfigManager(std::string filename)
     : filename(filename) {
-    load_defaults();
-    load_config(filename);
+    config_default = load_default();
+    config_custom  = load_custom(filename);
 }
 
 std::string sd::ConfigManager::get_config_s(std::string key) {
-    if (config.find(key) == config.end())
-        throw std::runtime_error("Failed to find " + key + " in config.");
-    
-    return config[key];
+    if (config_custom.find(key) != config_custom.end())
+        return config_custom[key];
+    else
+        return config_default[key];
 }
 
 template<>

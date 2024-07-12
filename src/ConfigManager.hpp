@@ -5,19 +5,22 @@
 #include <unordered_map>
 
 namespace sd {
+    typedef std::unordered_map<std::string, std::string> CfgType;
+    
     class ConfigManager {
-        std::unordered_map<std::string, std::string> config;
-        std::string                                  filename;
+        sd::CfgType config_default;
+        sd::CfgType config_custom;
+        std::string filename;
 
-        void load_defaults(void);
-        void load_config(std::string filename);
+        sd::CfgType load_default(void);
+        sd::CfgType load_custom(std::string filename);
+        std::string get_config_s(std::string key);
 
     public:
         ConfigManager(std::string filename);
 
-        std::string         get_config_s(std::string key);
         template<class T>
-        T                   get_config(std::string key);
+        T get_config(std::string key);
     };
 }
 
