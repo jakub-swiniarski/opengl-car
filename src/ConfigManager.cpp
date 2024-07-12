@@ -1,6 +1,5 @@
 #include <fstream>
 #include <sstream>
-#include <stdexcept>
 
 #include "ConfigManager.hpp"
 #include "log.hpp"
