@@ -53,12 +53,30 @@ std::string sd::ConfigManager::get_config_s(std::string key) {
 
 template<>
 int sd::ConfigManager::get_config<int>(std::string key) {
-    std::string val = get_config_s(key);
-    return std::stoi(val);
+    int value = std::stoi(config_default[key]);
+
+    if (config_custom.find(key) != config_custom.end()) {
+        try {
+            value = std::stoi(config_custom[key]);
+        } catch (...) {
+            sd::log(sd::LogType::warning, "Illegal config value: " + config_custom[key] + ".");
+        }
+    }
+
+    return value;
 }
 
 template<>
 float sd::ConfigManager::get_config<float>(std::string key) {
-    std::string val = get_config_s(key);
-    return std::stof(val);
+    int value = std::stof(config_default[key]);
+
+    if (config_custom.find(key) != config_custom.end()) {
+        try {
+            value = std::stof(config_custom[key]);
+        } catch (...) {
+            sd::log(sd::LogType::warning, "Illegal config value: " + config_custom[key] + ".");
+        }
+    }
+
+    return value;
 }
