@@ -44,13 +44,7 @@ sd::ConfigManager::ConfigManager(std::string filename) {
     config_custom  = load_custom(filename);
 }
 
-std::string sd::ConfigManager::get_config_s(std::string key) {
-    if (config_custom.find(key) != config_custom.end())
-        return config_custom[key];
-    else
-        return config_default[key];
-}
-
+// TODO: refactor this mess
 template<>
 int sd::ConfigManager::get_config<int>(std::string key) {
     int value = std::stoi(config_default[key]);

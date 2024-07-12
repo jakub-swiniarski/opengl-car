@@ -13,7 +13,6 @@ namespace sd {
 
         sd::CfgType load_default(void);
         sd::CfgType load_custom(std::string filename);
-        std::string get_config_s(std::string key);
 
     public:
         ConfigManager(std::string filename);
