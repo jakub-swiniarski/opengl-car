@@ -39,8 +39,7 @@ sd::CfgType sd::ConfigManager::load_custom(std::string filename) {
     return config;
 }
 
-sd::ConfigManager::ConfigManager(std::string filename)
-    : filename(filename) {
+sd::ConfigManager::ConfigManager(std::string filename) {
     config_default = load_default();
     config_custom  = load_custom(filename);
 }
