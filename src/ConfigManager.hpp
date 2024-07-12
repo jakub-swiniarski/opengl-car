@@ -10,7 +10,6 @@ namespace sd {
     class ConfigManager {
         sd::CfgType config_default;
         sd::CfgType config_custom;
-        std::string filename;
 
         sd::CfgType load_default(void);
         sd::CfgType load_custom(std::string filename);
