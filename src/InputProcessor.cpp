@@ -1,7 +1,7 @@
 #include <GLFW/glfw3.h>
 
-#include "Car.hpp"
 #include "InputProcessor.hpp"
+#include "Player.hpp"
 
 void sd::InputProcessor::update(int key, int scancode, int action, int mods) {
     if (player == nullptr
@@ -30,7 +30,7 @@ void sd::InputProcessor::update(int key, int scancode, int action, int mods) {
     player->set_keys(keys);
 }
 
-sd::InputProcessor::InputProcessor(sd::Car* player)
+sd::InputProcessor::InputProcessor(sd::Player* player)
     : player(player) {}
 
 void sd::InputProcessor::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {

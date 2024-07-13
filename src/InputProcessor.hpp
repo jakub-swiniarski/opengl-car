@@ -4,15 +4,15 @@
 class GLFWwindow;
 
 namespace sd {
-    class Car;
+    class Player;
 
     class InputProcessor {
-        sd::Car* player;
+        sd::Player* player;
 
         void update(int key, int scancode, int action, int mods);
     
     public:
-        InputProcessor(sd::Car* player);
+        InputProcessor(sd::Player* player);
     
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
     };

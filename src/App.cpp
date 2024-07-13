@@ -24,7 +24,7 @@ void sd::App::run(void) {
         int width, height;
         glfwGetFramebufferSize(window, &width, &height);
         camera.update(width, height);
-        car.update(delta_time); // TODO: movable manager? updates all from an std::vector
+        player.update(delta_time); // TODO: movable manager? updates all from an std::vector
 
         renderer.update();
 
@@ -36,8 +36,8 @@ void sd::App::run(void) {
 sd::App::App(void) 
     : cfg_manager("config.txt"),
       camera(sd::Vec3(0.0f, -3.0f, 0.0f), cfg_manager.get_config<float>("fov")),
-      input_proc(&car),
-      car("res/obj/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 10.0f) {
+      input_proc(&player),
+      player("res/obj/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 10.0f) {
 
     if (cfg_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(
@@ -64,7 +64,7 @@ sd::App::App(void)
         throw std::runtime_error("Failed to initialize window.");
     }
 
-    renderer.add_renderable(&car);
+    renderer.add_renderable(&player);
 
     glfwSetWindowUserPointer(window, &input_proc);
     glfwSetKeyCallback(window, sd::InputProcessor::key_callback);
