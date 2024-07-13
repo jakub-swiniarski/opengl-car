@@ -11,7 +11,7 @@ namespace sd {
     public:
         using sd::Car::Car;
 
-        void update(double mod) override;
+        void            update(double mod) override;
         const sd::Keys& get_keys(void) const;
         void            set_keys(sd::Keys& keys);
     };
