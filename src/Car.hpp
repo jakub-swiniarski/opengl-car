@@ -3,20 +3,21 @@
 
 #include <GL/gl.h>
 
-#include "Keys.hpp"
 #include "Movable.hpp"
 
 namespace sd {
     class Car : public sd::Movable {
         const GLfloat accel;
-        sd::Keys      keys;
+
+    protected:
+        void apply_friction(double mod);
+        void accelerate(double mod);
+        void turn(double mod);
 
     public:
         Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel);
         
-        void            update(double mod) override;
-        const sd::Keys& get_keys(void) const;
-        void            set_keys(sd::Keys& keys);
+        void update(double mod) override;
     };
 }
 
