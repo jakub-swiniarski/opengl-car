@@ -5,6 +5,7 @@
 
 namespace sd {
     enum class LogType {
+        info,
         warning,
         error
     };

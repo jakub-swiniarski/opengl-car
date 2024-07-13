@@ -5,6 +5,7 @@
 
 #include "App.hpp"
 #include "Car.hpp"
+#include "log.hpp"
 #include "Vec3.hpp"
 
 void sd::App::run(void) {
@@ -55,9 +56,11 @@ sd::App::App(void)
         );
     }
 
-    if (!window) {
+    if (window)
+        sd::log(sd::LogType::info, "Initialized window.");
+    else {
         glfwTerminate();
-        throw std::runtime_error("Failed to initialize a window.");
+        throw std::runtime_error("Failed to initialize window.");
     }
 
     renderer.add_renderable(&car);

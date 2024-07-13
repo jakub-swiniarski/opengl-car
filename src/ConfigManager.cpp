@@ -19,10 +19,7 @@ sd::CfgType sd::ConfigManager::load_custom(std::string filename) const {
     sd::CfgType   config;
     std::ifstream file(filename);
 
-    if (!file.is_open()) {
-        sd::log(sd::LogType::warning, "Failed to open " + filename + ".");
-        config = load_default();
-    } else {
+    if (file.is_open()) {
         std::string line;
         while (std::getline(file, line)) {
             std::string key;
@@ -34,6 +31,10 @@ sd::CfgType sd::ConfigManager::load_custom(std::string filename) const {
 
             config[key] = value;
         }
+        sd::log(sd::LogType::info, "Loaded custom config.");
+    } else {
+        sd::log(sd::LogType::warning, "Failed to open " + filename + ".");
+        config = load_default();
     }
 
     return config;
