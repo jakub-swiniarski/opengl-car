@@ -2,9 +2,9 @@
 #define APP_HPP
 
 #include "Camera.hpp"
-#include "Car.hpp"
 #include "ConfigManager.hpp"
 #include "InputProcessor.hpp"
+#include "Player.hpp"
 #include "Renderer.hpp"
 
 class GLFWwindow;
@@ -19,7 +19,7 @@ namespace sd {
         sd::Renderer       renderer;
 
         // ----- ACTORS ----- //
-        sd::Car car;
+        sd::Player player;
 
         void run(void);
 
