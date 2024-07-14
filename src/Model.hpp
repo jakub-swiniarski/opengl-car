@@ -15,6 +15,7 @@ namespace sd {
         std::vector<sd::Vec3> verts;
         std::vector<sd::Vec3> cols;
 
+        void                                      load_obj(std::string filepath);
         std::unordered_map<std::string, sd::Vec3> load_mtl(std::string filepath);
 
     public:
