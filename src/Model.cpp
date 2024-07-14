@@ -14,7 +14,6 @@ sd::Model::Model(std::string filepath, sd::Vec3 pos, GLfloat yaw)
         throw std::runtime_error("Failed to open " + filepath + ".");
 
     std::vector<sd::Vec3> buffer_v;
-    std::vector<sd::Vec3> buffer_vn;
 
     std::string line;
     while (std::getline(obj_file, line)) {
@@ -26,10 +25,6 @@ sd::Model::Model(std::string filepath, sd::Vec3 pos, GLfloat yaw)
             sd::Vec3 vert;
             iss >> vert.x >> vert.y >> vert.z;
             buffer_v.push_back(vert);
-        } else if (mode == "vn") {
-            sd::Vec3 vert;
-            iss >> vert.x >> vert.y >> vert.z;
-            buffer_vn.push_back(vert);
         } else if (mode == "f") {
             std::string data;
             for (int i = 0; i < 4; i++) {
@@ -39,9 +34,11 @@ sd::Model::Model(std::string filepath, sd::Vec3 pos, GLfloat yaw)
 
                 verts.push_back(buffer_v[index_v - 1]);
             }
-        } else if (mode == "mtllib") { // TODO: global const res_path
+        } else if (mode == "mtllib") {
             std::string filename_mtl;
             iss >> filename_mtl;
+            
+            std::string filepath_mtl = "res/" + filename_mtl; // TODO: ues global const res_path
         }
     }
 
