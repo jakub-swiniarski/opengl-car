@@ -4,7 +4,6 @@
 #include <stdexcept>
 
 #include "App.hpp"
-#include "Car.hpp"
 #include "log.hpp"
 #include "Vec3.hpp"
 
