@@ -1,5 +1,4 @@
 #include <fstream>
-#include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <unordered_map>
@@ -66,7 +65,6 @@ sd::Model::Model(std::string filepath, sd::Vec3 pos, GLfloat yaw)
                     sd::Vec3 col;
                     iss_mtl >> col.x >> col.y >> col.z;
                     buffer_c[colname] = col;
-                    std::cout << col.x << " " << col.y << " " << col.z << std::endl;
                 }
             }
         }
