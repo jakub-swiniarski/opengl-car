@@ -4,14 +4,14 @@
 
 #include "Model.hpp"
 
-sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat yaw) 
+sd::Model::Model(std::string filepath, sd::Vec3 pos, GLfloat yaw) 
     : pos(pos),
       yaw(yaw) {
     std::ifstream obj_file;
-    obj_file.open(filename);
+    obj_file.open(filepath);
 
     if (!obj_file.is_open())
-        throw std::runtime_error("Failed to open " + filename + ".");
+        throw std::runtime_error("Failed to open " + filepath + ".");
 
     std::vector<sd::Vec3> buffer_v;
     std::vector<sd::Vec3> buffer_vn;
@@ -39,6 +39,9 @@ sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat yaw)
 
                 verts.push_back(buffer_v[index_v - 1]);
             }
+        } else if (mode == "mtllib") { // TODO: global const res_path
+            std::string filename_mtl;
+            iss >> filename_mtl;
         }
     }
 

@@ -15,7 +15,7 @@ namespace sd {
         void turn(double mod);
 
     public:
-        Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel);
+        Car(std::string filepath, sd::Vec3 pos, GLfloat yaw, GLfloat accel);
         
         void update(double mod) override;
     };

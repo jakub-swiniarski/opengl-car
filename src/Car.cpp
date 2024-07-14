@@ -15,8 +15,8 @@ void sd::Car::turn(double mod) {
     model.turn(2.0f * speed * mod);
 }
 
-sd::Car::Car(std::string filename, sd::Vec3 pos, GLfloat yaw, GLfloat accel)
-    : sd::Movable(filename, pos, yaw), 
+sd::Car::Car(std::string filepath, sd::Vec3 pos, GLfloat yaw, GLfloat accel)
+    : sd::Movable(filepath, pos, yaw), 
       accel(accel) {}
 
 void sd::Car::update(double mod) {
