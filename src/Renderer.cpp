@@ -14,8 +14,14 @@ void sd::Renderer::render_model(const sd::Model& model) const {
 
     glBegin(GL_QUADS);
 
-    for (const auto& v : model.get_verts())
+    int i = 0;
+    const auto cols = model.get_cols();
+    for (const auto& v : model.get_verts()) {
+        glColor3f(cols[i].x, cols[i].y, cols[i].z);
         glVertex3f(v.x, v.y, v.z);
+
+        i++;
+    }
 
     glEnd();
 }
