@@ -38,9 +38,6 @@ sd::Model::Model(std::string filename, sd::Vec3 pos, GLfloat yaw)
                 int         index_v = std::stoi(data.substr(0, pos));
 
                 verts.push_back(buffer_v[index_v - 1]);
-
-                //int index_vn = std::stoi(data.substr(pos + 2));
-                //normals.push_back(buffer_vn[index_vn - 1]);
             }
         }
     }
@@ -59,10 +56,6 @@ const GLfloat& sd::Model::get_yaw(void) const {
 
 const std::vector<sd::Vec3>& sd::Model::get_verts(void) const {
     return verts;
-}
-
-const std::vector<sd::Vec3>& sd::Model::get_normals(void) const {
-    return normals;
 }
 
 void sd::Model::move(sd::Vec3 vec) {

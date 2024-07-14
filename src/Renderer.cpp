@@ -12,22 +12,10 @@ void sd::Renderer::render_model(const sd::Model& model) const {
     );
     glRotatef(model.get_yaw(), 0.0f, 1.0f, 0.0f);
 
-    GLfloat col[3] = { 1.0f, 1.0f, 1.0f };
-
     glBegin(GL_QUADS);
 
-    /*for (const auto& vn : m.get_normals())
-        glNormal3f(vn.x, vn.y, vn.z); */
- 
-    for (const auto& v : model.get_verts()) {
-        glColor3f(col[0], col[1], col[2]);
+    for (const auto& v : model.get_verts())
         glVertex3f(v.x, v.y, v.z);
-
-        for (int i = 0; i < 3; i++) {
-            if (col[i] >= 0.000001) 
-                col[i] -= 0.000001;
-        }
-    }
 
     glEnd();
 }
