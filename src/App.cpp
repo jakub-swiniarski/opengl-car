@@ -32,7 +32,7 @@ void sd::App::run(void) {
 }
 
 sd::App::App(void) 
-    : cfg_manager("config.txt"),
+    : cfg_manager(".config/shift-and-drift", "config.txt"),
       camera(sd::Vec3(0.0f, -3.0f, 0.0f), cfg_manager.get_config<float>("fov")),
       input_proc(&player),
       player("res/obj/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 10.0f) {
