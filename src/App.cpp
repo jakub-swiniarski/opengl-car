@@ -16,7 +16,6 @@ void sd::App::run(void) {
         last_time = current_time;
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glEnable(GL_CULL_FACE);
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
@@ -70,6 +69,7 @@ sd::App::App(void)
 
     glfwMakeContextCurrent(window);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
     glfwSwapInterval(1);
 
     run();
