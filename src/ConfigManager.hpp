@@ -12,10 +12,10 @@ namespace sd {
         sd::CfgType config_custom;
 
         sd::CfgType load_default(void) const;
-        sd::CfgType load_custom(std::string filename) const;
+        sd::CfgType load_custom(std::string filepath) const;
 
     public:
-        ConfigManager(std::string filename);
+        ConfigManager(std::string dirname, std::string filename);
 
         template<class T>
         T get_config(std::string key);
