@@ -14,7 +14,7 @@ namespace sd {
         std::vector<sd::Vec3> verts;
 
     public:
-        Model(std::string filename, sd::Vec3 pos, GLfloat yaw);
+        Model(std::string filepath, sd::Vec3 pos, GLfloat yaw);
 
         const sd::Vec3&              get_pos(void) const;
         const GLfloat&               get_yaw(void) const;
