@@ -3,6 +3,7 @@
 
 #include <GL/gl.h>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "Vec3.hpp"
@@ -13,6 +14,8 @@ namespace sd {
         GLfloat               yaw;
         std::vector<sd::Vec3> verts;
         std::vector<sd::Vec3> cols;
+
+        std::unordered_map<std::string, sd::Vec3> load_mtl(std::string filepath);
 
     public:
         Model(std::string filepath, sd::Vec3 pos, GLfloat yaw);

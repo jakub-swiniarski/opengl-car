@@ -5,6 +5,32 @@
 
 #include "Model.hpp"
 
+std::unordered_map<std::string, sd::Vec3> sd::Model::load_mtl(std::string filepath) {
+    std::unordered_map<std::string, sd::Vec3> map_cols;
+    std::ifstream                             file(filepath);
+
+    if (!file.is_open())
+        throw std::runtime_error("Failed to open " + filepath + ".");
+
+    std::string line;
+    std::string colname;
+    while(std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string        mode;
+        iss >> mode;
+
+        if (mode == "newmtl") {
+            iss >> colname;
+        } else if (mode == "Kd") {
+            sd::Vec3 col;
+            iss >> col.x >> col.y >> col.z;
+            map_cols[colname] = col;
+        }
+    }
+
+    return map_cols;
+}
+
 sd::Model::Model(std::string filepath, sd::Vec3 pos, GLfloat yaw) 
     : pos(pos),
       yaw(yaw) {
@@ -44,29 +70,9 @@ sd::Model::Model(std::string filepath, sd::Vec3 pos, GLfloat yaw)
         } else if (mode == "mtllib") {
             std::string filename_mtl;
             iss >> filename_mtl;
+            std::string filepath_mtl = "res/" + filename_mtl; // TODO: ues global const res_path
             
-            std::string   filepath_mtl = "res/" + filename_mtl; // TODO: ues global const res_path
-            std::ifstream file_mtl;
-            file_mtl.open(filepath_mtl);
-
-            if (!file_mtl.is_open())
-                throw std::runtime_error("Failed to open " + filepath_mtl + ".");
-
-            std::string line_mtl;
-            std::string colname;
-            while(std::getline(file_mtl, line_mtl)) {
-                std::istringstream iss_mtl(line_mtl);
-                std::string        mode_mtl;
-                iss_mtl >> mode_mtl;
-    
-                if (mode_mtl == "newmtl") {
-                    iss_mtl >> colname;
-                } else if (mode_mtl == "Kd") {
-                    sd::Vec3 col;
-                    iss_mtl >> col.x >> col.y >> col.z;
-                    buffer_c[colname] = col;
-                }
-            }
+            buffer_c = load_mtl(filepath_mtl); 
         }
     }
 
