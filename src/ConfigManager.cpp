@@ -15,9 +15,9 @@ sd::CfgType sd::ConfigManager::load_default(void) const {
     return config;
 }
 
-sd::CfgType sd::ConfigManager::load_custom(std::string filename) const {
+sd::CfgType sd::ConfigManager::load_custom(std::string filepath) const {
     sd::CfgType   config;
-    std::ifstream file(filename);
+    std::ifstream file(filepath);
 
     if (file.is_open()) {
         std::string line;
@@ -33,16 +33,24 @@ sd::CfgType sd::ConfigManager::load_custom(std::string filename) const {
         }
         sd::log(sd::LogType::info, "Loaded custom config.");
     } else {
-        sd::log(sd::LogType::warning, "Failed to open " + filename + ".");
+        sd::log(sd::LogType::warning, "Failed to open " + filepath + ".");
         config = load_default();
     }
 
     return config;
 }
 
-sd::ConfigManager::ConfigManager(std::string filename) {
+sd::ConfigManager::ConfigManager(std::string dirname, std::string filename) {
+    std::string filepath;
+
+#ifdef DEBUG
+    filepath = filename;
+#else
+    filepath = getenv("HOME") + std::string("/") + dirname + std::string("/") + filename;
+#endif // DEBUG
+
     config_default = load_default();
-    config_custom  = load_custom(filename);
+    config_custom  = load_custom(filepath);
 }
 
 // TODO: refactor this mess
