@@ -50,7 +50,6 @@ sd::Model::Model(std::string filepath, sd::Vec3 pos, GLfloat yaw)
         std::string        mode;
         iss >> mode;
 
-        // TODO: switch
         if (mode == "v") {
             sd::Vec3 vert;
             iss >> vert.x >> vert.y >> vert.z;
