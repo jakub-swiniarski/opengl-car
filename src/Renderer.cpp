@@ -32,6 +32,6 @@ void sd::Renderer::update(void) const {
 }
 
 void sd::Renderer::add_renderable(sd::Renderable* renderable) {
-    if (renderable != nullptr) //TODO: warning
+    if (renderable != nullptr)
         renderables.emplace_back(renderable);
 }
