@@ -41,7 +41,7 @@ void sd::Model::load_obj(std::string filepath) {
         } else if (mode == "mtllib") {
             std::string filename_mtl;
             iss >> filename_mtl;
-            std::string filepath_mtl = "res/" + filename_mtl; // TODO: ues global const res_path
+            std::string filepath_mtl = "res/" + filename_mtl; // TODO: use global const res_path, depends on DEBUG
             
             buffer_c = load_mtl(filepath_mtl); 
         }

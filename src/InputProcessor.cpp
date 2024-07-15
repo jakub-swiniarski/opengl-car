@@ -6,7 +6,7 @@
 void sd::InputProcessor::update(int key, int scancode, int action, int mods) {
     if (player == nullptr
     || (action != GLFW_PRESS && action != GLFW_RELEASE))
-        return; //TODO: display warning
+        return;
 
     sd::Keys keys = player->get_keys(); // this prevents keys from defaulting to 0
     
