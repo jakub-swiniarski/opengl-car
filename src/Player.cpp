@@ -3,9 +3,9 @@
 void sd::Player::update(double mod) {
     sd::Car::update(mod);
 
-    if (keys.accel_forward && !keys.accel_backward)
+    if (keys.go_forward && !keys.go_backward)
         accelerate(mod);
-    else if (keys.accel_backward && !keys.accel_forward)
+    else if (keys.go_backward && !keys.go_forward)
         accelerate(-mod);
 
     if (keys.turn_right && !keys.turn_left)

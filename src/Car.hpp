@@ -7,7 +7,7 @@
 
 namespace sd {
     class Car : public sd::Movable {
-        const GLfloat accel;
+        const GLfloat acceleration;
 
     protected:
         void apply_friction(double mod);
@@ -15,7 +15,7 @@ namespace sd {
         void turn(double mod);
 
     public:
-        Car(std::string filepath, sd::Vec3 pos, GLfloat yaw, GLfloat accel);
+        Car(std::string filepath, sd::Vec3 position, GLfloat yaw, GLfloat acceleration);
         
         void update(double mod) override;
     };

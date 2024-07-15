@@ -14,10 +14,10 @@ void sd::InputProcessor::update(int key, int scancode, int action, int mods) {
 
     switch(key) {
         case GLFW_KEY_W:
-            keys.accel_forward = key_state;
+            keys.go_forward = key_state;
             break;
         case GLFW_KEY_S:
-            keys.accel_backward = key_state;
+            keys.go_backward = key_state;
             break;
         case GLFW_KEY_A:
             keys.turn_left = key_state;
@@ -34,6 +34,6 @@ sd::InputProcessor::InputProcessor(sd::Player* player)
     : player(player) {}
 
 void sd::InputProcessor::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    InputProcessor* input_proc = static_cast<InputProcessor*>(glfwGetWindowUserPointer(window));
-    input_proc->update(key, scancode, action, mods);
+    InputProcessor* input_processor = static_cast<InputProcessor*>(glfwGetWindowUserPointer(window));
+    input_processor->update(key, scancode, action, mods);
 }

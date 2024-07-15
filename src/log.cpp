@@ -3,7 +3,7 @@
 #include "log.hpp"
 
 namespace sd {
-    namespace col {
+    namespace color {
         static const std::string reset  = "\033[0m";
         static const std::string red    = "\033[31m";
         static const std::string green  = "\033[32m";
@@ -17,18 +17,18 @@ void sd::log(sd::LogType type, std::string msg) {
 
     switch (type) { // TODO: unordered map, log type to color and log type to label?
         case sd::LogType::info:
-            color = sd::col::green;
+            color = sd::color::green;
             label = "Info";
             break;
         case sd::LogType::warning:
-            color = sd::col::yellow;
+            color = sd::color::yellow;
             label = "Warning";
             break;
         case sd::LogType::error:
-            color = sd::col::red;
+            color = sd::color::red;
             label = "Error";
             break;
     }
 
-    std::cerr << "[" << color << label << sd::col::reset << "] " << msg << std::endl;
+    std::cerr << "[" << color << label << sd::color::reset << "] " << msg << std::endl;
 }
