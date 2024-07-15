@@ -4,7 +4,7 @@
 #include "ConfigManager.hpp"
 #include "log.hpp"
 
-sd::CfgType sd::ConfigManager::load_default(void) const {
+sd::CfgType sd::ConfigManager::load_default(void) {
     sd::CfgType config;
 
     config["window_width"]  = "1280";
@@ -15,7 +15,7 @@ sd::CfgType sd::ConfigManager::load_default(void) const {
     return config;
 }
 
-sd::CfgType sd::ConfigManager::load_custom(std::string filepath) const {
+sd::CfgType sd::ConfigManager::load_custom(std::string filepath) {
     sd::CfgType   config;
     std::ifstream file(filepath);
 

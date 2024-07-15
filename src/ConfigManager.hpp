@@ -11,8 +11,8 @@ namespace sd {
         sd::CfgType config_default;
         sd::CfgType config_custom;
 
-        sd::CfgType load_default(void) const;
-        sd::CfgType load_custom(std::string filepath) const;
+        static sd::CfgType load_default(void);
+        static sd::CfgType load_custom(std::string filepath);
 
     public:
         ConfigManager(std::string dirname, std::string filename);
