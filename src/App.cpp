@@ -32,23 +32,23 @@ void sd::App::run(void) {
 }
 
 sd::App::App(void) 
-    : cfg_manager(".config/shift-and-drift", "config.txt"),
-      camera(sd::Vec3(0.0f, -3.0f, 0.0f), cfg_manager.get_config<float>("fov")),
-      input_proc(&player),
+    : config_manager(".config/shift-and-drift", "config.txt"),
+      camera(sd::Vec3(0.0f, -3.0f, 0.0f), config_manager.get_config<float>("fov")),
+      input_processor(&player),
       player("res/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 10.0f) {
 
-    if (cfg_manager.get_config<int>("fullscreen")) {
+    if (config_manager.get_config<int>("fullscreen")) {
         window = glfwCreateWindow(
-            cfg_manager.get_config<int>("window_width"),
-            cfg_manager.get_config<int>("window_height"),
+            config_manager.get_config<int>("window_width"),
+            config_manager.get_config<int>("window_height"),
             "Shift and Drift", 
             glfwGetPrimaryMonitor(),
             nullptr
         );
     } else {
         window = glfwCreateWindow(
-            cfg_manager.get_config<int>("window_width"),
-            cfg_manager.get_config<int>("window_height"),
+            config_manager.get_config<int>("window_width"),
+            config_manager.get_config<int>("window_height"),
             "Shift and Drift", 
             nullptr,
             nullptr
@@ -64,7 +64,7 @@ sd::App::App(void)
 
     renderer.add_renderable(&player);
 
-    glfwSetWindowUserPointer(window, &input_proc);
+    glfwSetWindowUserPointer(window, &input_processor);
     glfwSetKeyCallback(window, sd::InputProcessor::key_callback);
 
     glfwMakeContextCurrent(window);

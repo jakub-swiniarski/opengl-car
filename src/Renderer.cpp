@@ -6,20 +6,19 @@
 
 void sd::Renderer::render_model(const sd::Model& model) const {
     glTranslatef(
-        model.get_pos().x,
-        model.get_pos().y,
-        model.get_pos().z
+        model.get_position().x,
+        model.get_position().y,
+        model.get_position().z
     );
     glRotatef(model.get_yaw(), 0.0f, 1.0f, 0.0f);
 
     glBegin(GL_QUADS);
 
     int i = 0;
-    const auto cols = model.get_cols();
-    for (const auto& v : model.get_verts()) {
+    const auto cols = model.get_colors();
+    for (const auto& v : model.get_vertices()) {
         glColor3f(cols[i].x, cols[i].y, cols[i].z);
         glVertex3f(v.x, v.y, v.z);
-
         i++;
     }
 

@@ -9,7 +9,7 @@ namespace sd {
         sd::Model model;
 
     public:
-        Renderable(std::string filepath, sd::Vec3 pos, GLfloat yaw);
+        Renderable(std::string filepath, sd::Vec3 position, GLfloat yaw);
 
         const sd::Model& get_model(void) const;
     };

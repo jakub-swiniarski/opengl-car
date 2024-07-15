@@ -13,9 +13,9 @@ namespace sd {
     class App {
         // ----- CORE ----- //
         GLFWwindow*        window;
-        sd::ConfigManager  cfg_manager;
+        sd::ConfigManager  config_manager;
         sd::Camera         camera;
-        sd::InputProcessor input_proc;
+        sd::InputProcessor input_processor;
         sd::Renderer       renderer;
 
         // ----- ACTORS ----- //

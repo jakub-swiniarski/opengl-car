@@ -2,8 +2,8 @@
 
 #include "Camera.hpp"
 
-sd::Camera::Camera(sd::Vec3 pos, GLfloat fov)
-    : pos(pos),
+sd::Camera::Camera(sd::Vec3 position, GLfloat fov)
+    : position(position),
       fov(fov),
       pitch(15.0f),
       yaw(0.0f) {}
@@ -27,7 +27,7 @@ void sd::Camera::update(int width, int height) const {
     glMultMatrixf(projection_matrix);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glTranslatef(pos.x, pos.y, pos.z);
+    glTranslatef(position.x, position.y, position.z);
     glRotatef(pitch, 1.0f, 0.0f, 0.0f);
     glRotatef(yaw, 0.0f, 1.0f, 0.0f);
 }
