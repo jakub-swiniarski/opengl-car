@@ -7,7 +7,7 @@ namespace sd {
     class Player;
 
     class InputProcessor {
-        sd::Player* player;
+        sd::Player* player; // TODO: consider using a reference
 
         void update(int key, int scancode, int action, int mods);
     
