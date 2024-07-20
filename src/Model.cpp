@@ -61,7 +61,7 @@ std::unordered_map<std::string, sd::Vec3> sd::Model::load_mtl(std::string filepa
 
     std::string line;
     std::string color_key;
-    while(std::getline(file, line)) {
+    while (std::getline(file, line)) {
         std::istringstream iss(line);
         std::string        mode;
         iss >> mode;

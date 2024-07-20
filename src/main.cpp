@@ -7,7 +7,7 @@
 
 int main(void) {
     try {
-        if(glfwInit())
+        if (glfwInit())
             sd::log(sd::LogType::info, "Initialized GLFW.");
         else
             throw std::runtime_error("Failed to initialize GLFW.");
