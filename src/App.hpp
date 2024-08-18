@@ -25,6 +25,7 @@ namespace sd {
 
     public:
         App(void);
+        ~App(void);
     };
 }
 

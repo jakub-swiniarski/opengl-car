@@ -15,7 +15,6 @@ int main(void) {
         sd::App game;
     } catch (const std::exception& e) {
         sd::log(sd::LogType::error, e.what());
-        glfwTerminate();
         return EXIT_FAILURE;
     } catch (...) {
         throw std::runtime_error("Unknown error.");

@@ -73,7 +73,9 @@ sd::App::App(void)
     glfwSwapInterval(1);
 
     run();
+}
 
+sd::App::~App(void) {
     glfwDestroyWindow(window);
     glfwTerminate();
 }
