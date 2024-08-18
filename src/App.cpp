@@ -1,5 +1,4 @@
 #include <GL/gl.h>
-#include <cmath>
 #include <GLFW/glfw3.h>
 #include <stdexcept>
 
