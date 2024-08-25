@@ -13,6 +13,9 @@ void sd::Camera::update(int width, int height) const {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
+    // TODO: simplify or use glu or sth else, frustum culling
+    // TODO: camera yaw should smoothly and slowly follow car yaw
+
     GLfloat aspect_ratio        = static_cast<GLfloat>(width) / static_cast<GLfloat>(height);
     GLfloat near_plane          = 0.1f;
     GLfloat far_plane           = 100.0f;

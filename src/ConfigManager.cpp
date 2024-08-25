@@ -12,6 +12,8 @@ sd::CfgType sd::ConfigManager::load_default(void) {
     config["fullscreen"]    = "0";
     config["fov"]           = "90.0";
 
+    // TODO: keybindings config
+
     return config;
 }
 
