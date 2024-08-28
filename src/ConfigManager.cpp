@@ -1,5 +1,6 @@
 #include <fstream>
 #include <sstream>
+#include <type_traits>
 
 #include "ConfigManager.hpp"
 #include "log.hpp"
@@ -55,33 +56,28 @@ sd::ConfigManager::ConfigManager(std::string dirname, std::string filename) {
     config_custom  = load_custom(filepath);
 }
 
-// TODO: refactor this mess
-template<>
-int sd::ConfigManager::get_config<int>(std::string key) {
-    int value = std::stoi(config_default[key]);
+template<class T>
+T sd::ConfigManager::get_config(std::string key) {
+    T value;
+    if constexpr (std::is_same_v<T, int>)
+        value = std::stoi(config_default[key]);
+    else if constexpr (std::is_same_v<T, float>)
+        value = std::stof(config_default[key]);
 
     if (config_custom.find(key) != config_custom.end()) {
         try {
-            value = std::stoi(config_custom[key]);
+            if constexpr (std::is_same_v<T, int>)
+                value = std::stoi(config_custom[key]);
+            else if constexpr (std::is_same_v<T, float>)
+                value = std::stof(config_custom[key]);
         } catch (...) {
             sd::log(sd::LogType::warning, "Illegal config value: " + config_custom[key] + ".");
         }
     }
 
     return value;
+    
 }
 
-template<>
-float sd::ConfigManager::get_config<float>(std::string key) {
-    float value = std::stof(config_default[key]);
-
-    if (config_custom.find(key) != config_custom.end()) {
-        try {
-            value = std::stof(config_custom[key]);
-        } catch (...) {
-            sd::log(sd::LogType::warning, "Illegal config value: " + config_custom[key] + ".");
-        }
-    }
-
-    return value;
-}
+template int   sd::ConfigManager::get_config<int>(const std::string);
+template float sd::ConfigManager::get_config<float>(const std::string);
