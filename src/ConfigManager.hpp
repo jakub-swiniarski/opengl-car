@@ -18,6 +18,8 @@ namespace sd {
         ConfigManager(std::string dirname, std::string filename);
 
         template<class T>
+        T convert_type(std::string value);
+        template<class T>
         T get_config(std::string key);
     };
 }
