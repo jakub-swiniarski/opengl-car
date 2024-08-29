@@ -3,10 +3,10 @@
 
 namespace sd {
     struct Keys {
-        unsigned int go_forward  : 1;
-        unsigned int go_backward : 1;
-        unsigned int turn_right  : 1;
-        unsigned int turn_left   : 1;
+        bool go_forward  : 1;
+        bool go_backward : 1;
+        bool turn_right  : 1;
+        bool turn_left   : 1;
 
         Keys(void);
     };
