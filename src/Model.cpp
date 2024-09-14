@@ -5,7 +5,7 @@
 
 #include "Model.hpp"
 
-void sd::Model::load_obj(std::string filepath) {
+void sd::Model::load_obj(const std::string& filepath) {
     std::ifstream file;
     file.open(filepath);
 
@@ -52,7 +52,7 @@ void sd::Model::load_obj(std::string filepath) {
 
 }
 
-std::unordered_map<std::string, sd::Vec3> sd::Model::load_mtl(std::string filepath) {
+std::unordered_map<std::string, sd::Vec3> sd::Model::load_mtl(const std::string& filepath) {
     std::unordered_map<std::string, sd::Vec3> map_colors;
     std::ifstream                             file(filepath);
 

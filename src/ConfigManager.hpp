@@ -5,7 +5,7 @@
 #include <unordered_map>
 
 namespace sd {
-    typedef std::unordered_map<std::string, std::string> CfgType;
+    using CfgType = std::unordered_map<std::string, std::string>;
     
     class ConfigManager {
         sd::CfgType config_default;

@@ -15,8 +15,8 @@ namespace sd {
         std::vector<sd::Vec3> vertices;
         std::vector<sd::Vec3> colors;
 
-        void                                             load_obj(std::string filepath);
-        static std::unordered_map<std::string, sd::Vec3> load_mtl(std::string filepath);
+        void                                             load_obj(const std::string& filepath);
+        static std::unordered_map<std::string, sd::Vec3> load_mtl(const std::string& filepath);
 
     public:
         Model(std::string filepath, sd::Vec3 position, GLfloat yaw);
