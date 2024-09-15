@@ -15,6 +15,9 @@ namespace sd {
         void turn(double mod);
 
     public:
+        static constexpr GLfloat brake_factor = 0.2f;
+        static constexpr GLfloat turn_factor  = 2.0f;
+
         Car(std::string filepath, sd::Vec3 position, GLfloat yaw, GLfloat acceleration);
         
         void update(double mod) override;

@@ -9,10 +9,13 @@ namespace sd {
     class Camera {
         sd::Vec3 position;
         GLfloat  fov;
-        GLfloat  pitch;
+        GLfloat  pitch; // TODO: vec3 for all angles in all classes
         GLfloat  yaw;
 
     public:
+        static constexpr GLfloat near_plane = 0.1f;
+        static constexpr GLfloat far_plane  = 100.0f;
+
         Camera(sd::Vec3 position, GLfloat fov);
 
         void update(int width, int height) const;

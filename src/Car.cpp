@@ -4,7 +4,7 @@ void sd::Car::apply_friction(double mod) {
     if (speed < 0.01f && speed > -0.01f)
         speed = 0.0f;
     else
-        speed += (speed > 0) ? -acceleration * mod / 5.0f : acceleration * mod / 5.0f;
+        speed += (speed > 0) ? -acceleration * mod * brake_factor : acceleration * mod * brake_factor;
 }
 
 void sd::Car::accelerate(double mod) {
@@ -12,7 +12,7 @@ void sd::Car::accelerate(double mod) {
 }
 
 void sd::Car::turn(double mod) {
-    model.turn(2.0f * speed * mod);
+    model.turn(speed * mod * turn_factor);
 }
 
 sd::Car::Car(std::string filepath, sd::Vec3 position, GLfloat yaw, GLfloat acceleration)
