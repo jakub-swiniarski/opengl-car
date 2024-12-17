@@ -1,2 +1,2 @@
 # Chevrolet model
-https://free3d.com/user/thmacr
+Author: https://free3d.com/user/thmacr
