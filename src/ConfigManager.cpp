@@ -12,8 +12,6 @@ sd::CfgType sd::ConfigManager::load_default(void) {
     config["fullscreen"]    = "0";
     config["fov"]           = "90.0";
 
-    // TODO: keybindings config
-
     return config;
 }
 
@@ -42,15 +40,7 @@ sd::CfgType sd::ConfigManager::load_custom(std::string filepath) {
     return config;
 }
 
-sd::ConfigManager::ConfigManager(std::string dirname, std::string filename) {
-    std::string filepath;
-
-#ifdef DEBUG
-    filepath = filename;
-#else
-    filepath = getenv("HOME") + std::string("/") + dirname + std::string("/") + filename;
-#endif // DEBUG
-
+sd::ConfigManager::ConfigManager(std::string filepath) {
     config_default = load_default();
     config_custom  = load_custom(filepath);
 }

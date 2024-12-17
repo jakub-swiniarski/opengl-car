@@ -31,7 +31,7 @@ void sd::App::run(void) {
 }
 
 sd::App::App(void) 
-    : config_manager(".config/shift-and-drift", "config.txt"),
+    : config_manager("config.txt"),
       camera(sd::Vec3(0.0f, -3.0f, 0.0f), config_manager.get_config<float>("fov")),
       input_processor(&player),
       player("res/chevrolet.obj", sd::Vec3(0.0f, 0.0f, -8.0f), 180.0f, 10.0f) {
@@ -40,7 +40,7 @@ sd::App::App(void)
         window = glfwCreateWindow(
             config_manager.get_config<int>("window_width"),
             config_manager.get_config<int>("window_height"),
-            "Shift and Drift", 
+            "OpenGL Car", 
             glfwGetPrimaryMonitor(),
             nullptr
         );
@@ -48,7 +48,7 @@ sd::App::App(void)
         window = glfwCreateWindow(
             config_manager.get_config<int>("window_width"),
             config_manager.get_config<int>("window_height"),
-            "Shift and Drift", 
+            "OpenGL Car", 
             nullptr,
             nullptr
         );

@@ -15,7 +15,7 @@ namespace sd {
         static sd::CfgType load_custom(std::string filepath);
 
     public:
-        ConfigManager(std::string dirname, std::string filename);
+        ConfigManager(std::string filepath);
 
         template<class T>
         T convert_type(std::string value);
